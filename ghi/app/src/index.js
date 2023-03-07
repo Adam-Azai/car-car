@@ -10,12 +10,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 async function loadEverything(){
   const manufacturerResponse = await fetch('http://localhost:8100/api/manufacturers/')
   const vehicleResponse = await fetch('http://localhost:8100/api/models/')
-  if (manufacturerResponse.ok && vehicleResponse.ok){
+  const inventoryResponse = await fetch('http://localhost:8100/api/automobiles/')
+  if (manufacturerResponse.ok && vehicleResponse.ok && inventoryResponse.ok){
     const manufacturerData = await manufacturerResponse.json()
     const vehicleData = await vehicleResponse.json()
+    const inventoryData = await inventoryResponse.json()
     root.render(
       <React.StrictMode>
-        <App manufacturers={manufacturerData.manufacturers} vehicles={vehicleData.models} />
+        <App manufacturers={manufacturerData.manufacturers} vehicles={vehicleData.models} automobiles={inventoryData.autos} />
       </React.StrictMode>
     );
   } else {
