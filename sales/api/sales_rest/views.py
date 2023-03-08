@@ -60,7 +60,7 @@ def api_salesperson_list(request):
 
 
 @require_http_methods(["GET"])
-def api_automobile_list(request):
+def api_automobile_list(request, ):
   if request.method == "GET":
     automobiles = AutomobileVO.objects.all()
     return JsonResponse(
@@ -69,52 +69,65 @@ def api_automobile_list(request):
       safe=False,
     )
 
-@require_http_methods(["GET", "DELETE"])
-def api_sales_record_list(request):
+@require_http_methods(["GET", "POST"])
+def api_sales_record_list(request, automobile_vo_id=None):
   if request.method == "GET":
-    sales = SalesRecord.objects.all()
+    if automobile_vo_id is not None:
+      salerecords = SalesRecord.objects.filter(automobile=automobile_vo_id)
+      #Automobile in SalesRecordEncoder in Sales Record Model is AutomobileVO... which is VIN because ForeignKey
+      return JsonResponse(
+        salesrecords,
+        encoder=SalesRecordEncoder,
+            # "automobile",
+            # "salesperson",
+            # "customer",
+            # "sales_price",
+        safe=False
+      )
+    else: #"else" POST
+      salesrecords = SalesRecord.objects.all()
     return JsonResponse(
-      {"sales": sales},
+      {"salesrecords": salesrecords},
       encoder=SalesRecordEncoder,
-          # "automobile",
-          # "salesperson",
-          # "customer",
-          # "sales_price",
       safe=False
     )
+  else:
+    content = json.loads(request.body)
+    try:
+      salesperson = Salesperson.objects.get(name=content["name"])
+      content["name"] = name
+    except Salesperson.DoesNotExist:
+      return JsonResponse(
+        {"message": "Salesperson does not exist"},
+        status=400,
+      )
+    try:
+      vin = AutomobileVO.objects.get(vin=content['vin'])
+      if vin is not None:
+        content['availability'] = False # set to false when record is created to change availablity to falsy
+        sales = SalesRecord.objects.create(**content)
+        return JsonResponse(
+          salesrecord,
+          encoder=SalesRecordEncoder,
+          safe=False,
+        )
+    except AutomobileVO.DoesNotExist: #maybe convert this to something else, possibly a failure if car is already sold????
+      salesrecord = SalesRecord.objects.create(**content)
+      return JsonResponse(
+        salesrecord,
+        encoder=SalesRecordEncoder,
+        safe=False
+      )
 
-
-# @require_http_methods(["GET", "POST"])
-# def api_sales_record_list(request,):
-#   if request.method == "GET":
-#     sales_records = SalesRecord.objects.all()
-#     return JsonResponse(
-#       {"sales_records": sales_records},
-#       encoder=SalesRecordEncoder,
-#       safe=False,
-#     )
-  # else:
-  #   try:
-  #     content = json.loads(request.body)
-  #     content = {
-  #       **content,
-  #       "salesperson": Salesperson.objects.get(pk=content["salesperson"]),
-  #       "automobile": AutomobileVO.objects.get(vin=content["automobile"]),
-  #       "customer": Customer.objects.get(pk=content["customer"]),
-  #       "sales_price": salesprice,
-  #     }
-  #     sales_record = SalesRecord.objects.create(**content)
-  #     return JsonResponse(
-  #       {"sales_record": sales_record},
-  #       encoder=SalesRecordEncoder,
-  #       safe=False
-  #     )
-  #   except:
-  #     response = JsonResponse(
-  #       {"message": "Invalid Sales Record Info"}
-  #     )
-  #     response.status_code = 400
-  #     return response
-
-
-#
+@require_http_methods(["GET", "DELETE"])
+def api_sales_record(request,id):
+  if request.method == "GET":
+    salesrecord = SalesRecord.objects.filter(id=name)
+    return JsonResponse(
+      salesrecord,
+      encoder=SalesRecordEncoder,
+      safe=False
+    )
+  else:
+    count, _=SalesRecord.objects.filter(id=id).delete()
+    return JsonResponse({"deleted": count > 0})

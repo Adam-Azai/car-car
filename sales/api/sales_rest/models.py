@@ -14,7 +14,7 @@ class AutomobileVO(models.Model):
   availability = models.BooleanField(default=True)
 
   def __str__(self):
-    return f'{self.name}'
+    return f'{self.vin}'
 
 
 class Salesperson(models.Model):
@@ -44,4 +44,4 @@ class SalesRecord(models.Model):
   sales_price = models.CharField(max_length=250)
 
   def __str__(self):
-    return f'{self.name}'
+    return f'{self.automobile}'
