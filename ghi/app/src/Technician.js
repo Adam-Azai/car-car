@@ -23,6 +23,7 @@ function Technician(props) {
             const newTechnician = await technicianResponse.json()
             setTechnicianName("");
             setID("");
+            alert(`${technicianName} has been added to our Employee Directory`)
             console.log(newTechnician)
         } else{
             console.log('why')
