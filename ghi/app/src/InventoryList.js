@@ -1,5 +1,24 @@
-function InventoryList(props) {
-  //add delete later?
+import React, {useEffect, useState} from 'react'
+
+function InventoryList() {
+  const [autos, setAutomobile] = useState([])
+
+  const fetchData = async () => {
+    const automobileUrl = 'http://localhost:8100/api/automobiles/'
+    try{
+      const response = await fetch(automobileUrl)
+        if(response.ok){
+          const data = await response.json()
+          setAutomobile(data.autos)
+      }
+    } catch(e){
+      console.error(e)
+      }
+    }
+      useEffect(() =>{
+          fetchData()
+      }, [])
+
   return (
     <>
     <table className="table table-striped">
@@ -13,7 +32,7 @@ function InventoryList(props) {
         </tr>
       </thead>
       <tbody>
-        {props.automobiles.map((auto) =>{
+        {autos.map((auto) =>{
           return (
             <tr key={auto.id}>
               <td>{auto.vin}</td>

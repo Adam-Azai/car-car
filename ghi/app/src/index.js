@@ -5,23 +5,11 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-
-
 async function loadEverything(){
-  const manufacturerResponse = await fetch('http://localhost:8100/api/manufacturers/')
-  const vehicleResponse = await fetch('http://localhost:8100/api/models/')
-  const inventoryResponse = await fetch('http://localhost:8100/api/automobiles/')
-  if (manufacturerResponse.ok && vehicleResponse.ok && inventoryResponse.ok){
-    const manufacturerData = await manufacturerResponse.json()
-    const vehicleData = await vehicleResponse.json()
-    const inventoryData = await inventoryResponse.json()
     root.render(
       <React.StrictMode>
-        <App manufacturers={manufacturerData.manufacturers} vehicles={vehicleData.models} automobiles={inventoryData.autos} />
+        <App />
       </React.StrictMode>
     );
-  } else {
-    console.error(manufacturerResponse)
-  }
 }
 loadEverything()

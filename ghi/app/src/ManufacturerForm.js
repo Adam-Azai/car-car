@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-function ManufacturerForm(props) {
+function ManufacturerForm() {
   const [manufacturer, setManufacturer] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {};
     data.name = manufacturer
-
 
     const manufacturerUrl ='http://localhost:8100/api/manufacturers/';
     const fetchConfig = {

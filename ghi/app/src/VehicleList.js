@@ -1,4 +1,27 @@
-function VehicleList(props){
+import React, { useEffect, useState } from 'react';
+
+
+
+function VehicleList(){
+     const[vehicles, setVehicle] = useState([])
+
+     const fetchData = async () => {
+        const url = 'http://localhost:8100/api/models/'
+        try{
+            const response = await fetch(url)
+            if(response.ok){
+            const data = await response.json()
+            setVehicle(data.models)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect( () =>{
+        fetchData()
+    }, [])
+
     return (
         <>
         <table className="table table-striped">
@@ -10,7 +33,7 @@ function VehicleList(props){
           </tr>
         </thead>
         <tbody>
-            {props.vehicles.map((vehicle) =>{
+            {vehicles.map((vehicle) =>{
                 return (
                     <tr key={vehicle.id}>
                         <td>{vehicle.name}</td>
