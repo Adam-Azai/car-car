@@ -1,20 +1,11 @@
 from django.shortcuts import render
-from .models import Customer, Salesperson, AutomobileVO, SalesRecord
 from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
 from django.views.decorators.http import require_http_methods
+from .encoders import CustomerEncoder, SalespersonEncoder, AutomobileVOEncoder, SalesRecordEncoder
 # Create your views here.
 
-
-class CustomerEncoder(ModelEncoder):
-  model = Customer
-  properties = [
-    "name",
-    "address",
-    "phone",
-    "id",
-    ]
 
 @require_http_methods(["GET", "POST"])
 def api_customer_list(request):
@@ -40,13 +31,6 @@ def api_customer_list(request):
       response.status_code = 400
       return response
 
-class SalespersonEncoder(ModelEncoder):
-  model = Salesperson
-  properties = [
-    "name",
-    "employee_number",
-    "id",
-    ]
 
 @require_http_methods(["GET", "POST"])
 def api_salesperson_list(request):
@@ -72,13 +56,7 @@ def api_salesperson_list(request):
       response.status_code = 400
       return response
 
-class AutomobileVOEncoder(ModelEncoder):
-  model = AutomobileVO
-  properties = [
-    "vin",
-    "id",
-    "availability",
-  ]
+
 
 @require_http_methods(["GET"])
 def api_automobile_list(request):
@@ -90,14 +68,7 @@ def api_automobile_list(request):
       safe=False,
     )
 
-class SalesRecordEncoder(ModelEncoder):
-  model = SalesRecord
-  properties = [
-    "automobile",
-    "salesperson",
-    "customer",
-    "sales_price",
-  ]
+
 
 @require_http_methods(["GET", "POST"])
 def api_sales_record_list(request,):
