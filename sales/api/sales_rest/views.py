@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer, Salesperson
+from .models import Customer, Salesperson, AutomobileVO, SalesRecord
 from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
@@ -72,3 +72,29 @@ def salesperson_list(request):
       )
       response.status_code = 400
       return response
+
+class AutomobileVOEncoder(ModelEncoder):
+  model = AutomobileVO
+  properties = [
+    "vin",
+    "id",
+  ]
+
+class SalesRecordEncoder(ModelEncoder):
+  model = SalesRecord
+  properties = [
+    "automobile",
+    "salesperson",
+    "customer",
+    "sales_price",
+  ]
+
+@require_http_methods(["GET", "POST"])
+def sales_record(request):
+  if request.method == "GET":
+    sales_records = SalesRecord.objects.all()
+    return JsonResponse(
+      {"sales_records": sales_records},
+      encoder=SalesRecordEncoder,
+      safe=False,
+    )
