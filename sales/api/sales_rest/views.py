@@ -4,6 +4,7 @@ from common.json import ModelEncoder
 import json
 from django.views.decorators.http import require_http_methods
 from .encoders import CustomerEncoder, SalespersonEncoder, AutomobileVOEncoder, SalesRecordEncoder
+from .models import Customer, AutomobileVO, Salesperson, SalesRecord
 # Create your views here.
 
 
@@ -68,17 +69,30 @@ def api_automobile_list(request):
       safe=False,
     )
 
-
-
-@require_http_methods(["GET", "POST"])
-def api_sales_record_list(request,):
+@require_http_methods(["GET", "DELETE"])
+def api_sales_record_list(request):
   if request.method == "GET":
-    sales_records = SalesRecord.objects.all()
+    sales = SalesRecord.objects.all()
     return JsonResponse(
-      {"sales_records": sales_records},
+      {"sales": sales},
       encoder=SalesRecordEncoder,
-      safe=False,
+          # "automobile",
+          # "salesperson",
+          # "customer",
+          # "sales_price",
+      safe=False
     )
+
+
+# @require_http_methods(["GET", "POST"])
+# def api_sales_record_list(request,):
+#   if request.method == "GET":
+#     sales_records = SalesRecord.objects.all()
+#     return JsonResponse(
+#       {"sales_records": sales_records},
+#       encoder=SalesRecordEncoder,
+#       safe=False,
+#     )
   # else:
   #   try:
   #     content = json.loads(request.body)

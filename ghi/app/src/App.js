@@ -9,6 +9,7 @@ import InventoryList from './InventoryList';
 import Technician from './Technician';
 import ServiceAppointmentList from './AppointmentList';
 import AutomobileForm from './AutomobileForm';
+import SalesCustomerForm from './SalesCustomerForm';
 
 function App(props) {
   return (
@@ -33,6 +34,7 @@ function App(props) {
             <Route path="new" element={<ManufacturerForm />} />
           </Route>
           <Route path='technician' element={<Technician/>}/>
+          <Route path="customer/new" element={<SalesCustomerForm/>}/>
         </Routes>
       </div>
     </BrowserRouter>

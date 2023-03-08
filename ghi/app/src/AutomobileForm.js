@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AutomobileForm(props){
+function AutomobileForm(){
   const [color, setColor] = useState('');
   const [year, setYear] = useState('');
   const [vin, setVin] = useState('');
@@ -72,7 +72,7 @@ function AutomobileForm(props){
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h2>Add an automobile to inventory</h2>
+          <h2>Add an Automobile to the Inventory</h2>
           <form onSubmit={handleSubmit} id="add-automobile">
 
 

@@ -35,4 +35,5 @@ class SalesRecordEncoder(ModelEncoder):
     "salesperson",
     "customer",
     "sales_price",
+    "id",
   ]

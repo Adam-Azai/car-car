@@ -17,7 +17,6 @@ from sales_rest.models import AutomobileVO
 def show_automobiles():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
-    print(content)
     for automobile in content["autos"]:
         AutomobileVO.objects.update_or_create(vin=automobile["vin"],
         )
@@ -25,7 +24,7 @@ def show_automobiles():
 
 def poll():
     while True:
-        print('Sales custom poller polling for data')
+        print('Sales poller polling for data')
         try:
             show_automobiles()
             pass
