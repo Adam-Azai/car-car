@@ -52,7 +52,7 @@ function SalespersonForm() {
             </div>
 
             <div className="form-cloating mb-3">
-              <input value={employeeNumber} onChange={handleEmployeeNumberChange} name="name" placeholder="Employee Number" id="name" required type="text" className="form-control" />
+              <input value={employeeNumber} onChange={handleEmployeeNumberChange} name="name" placeholder="Employee Number: ex.'xxxxx'" id="name" required type="text" className="form-control" />
             </div>
 
           <button className="btn btn-primary">Create</button>
