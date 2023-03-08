@@ -8,7 +8,6 @@ function ManufacturerForm(props) {
     const data = {};
     data.name = manufacturer
 
-
     const manufacturerUrl ='http://localhost:8100/api/manufacturers/';
     const fetchConfig = {
       method: "post",

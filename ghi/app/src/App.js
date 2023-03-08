@@ -6,6 +6,8 @@ import VehicleList from './VehicleList';
 import ManufacturerForm from './ManufacturerForm';
 import VehicleForm from './VehicleForm';
 import InventoryList from './InventoryList';
+import Technician from './Technician';
+
 
 function App(props) {
   return (
@@ -24,8 +26,8 @@ function App(props) {
           <Route path='manufacturers'>
             <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />}  />
             <Route path="new" element={<ManufacturerForm />} />
-            </Route>
-
+          </Route>
+          <Route path='technician' element={<Technician/>}/>
         </Routes>
       </div>
     </BrowserRouter>
