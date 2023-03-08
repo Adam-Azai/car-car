@@ -1,6 +1,6 @@
-import React, {Component, useState} from 'react'
+import React, { useState} from 'react'
 
-function Technician(props) {
+function Technician() {
     const [technicianName, setTechnicianName] = useState('')
     const [employeeNumber, setID] = useState('')
 
@@ -29,7 +29,6 @@ function Technician(props) {
             console.log('why')
         }
     }
-
     const handleTechnicianChange= (event) => {
         const value = event.target.value
         setTechnicianName(value)
@@ -39,14 +38,6 @@ function Technician(props) {
         setID(value)
 
     }
-
-
-
-
-
-
-
-
     return(
         <div className="row">
         <div className="offset-3 col-6">
