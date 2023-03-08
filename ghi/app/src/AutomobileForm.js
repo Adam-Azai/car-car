@@ -76,15 +76,15 @@ function AutomobileForm(props){
           <form onSubmit={handleSubmit} id="add-automobile">
 
 
-            <div className='form-cloating mb-3'>
+            <div className='form-floating mb-3'>
               <input value={color} onChange={handleColorChange} name="name" placeholder="Color" id="name" required type="text" className="form-control" />
             </div>
 
-            <div className='form-cloating mb-3'>
+            <div className='form-floating mb-3'>
               <input value={year} onChange={handleYearChange} name="name" placeholder="Year" id="name" required type="text" className="form-control" />
             </div>
 
-            <div className='form-cloating mb-3'>
+            <div className='form-floating mb-3'>
               <input value={vin} onChange={handleVinChange} name="name" placeholder="VIN" id="name" required type="text" className="form-control" />
             </div>
 

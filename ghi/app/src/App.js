@@ -9,7 +9,7 @@ import InventoryList from './InventoryList';
 import Technician from './Technician';
 import ServiceAppointmentList from './AppointmentList';
 import AutomobileForm from './AutomobileForm';
-
+import AppointmentForm from './AppointmentForm';
 function App(props) {
   return (
     <BrowserRouter>
@@ -27,6 +27,7 @@ function App(props) {
           </Route>
           <Route path="appointments/">
             <Route path="" element={<ServiceAppointmentList/>} />
+            <Route path='new' element={<AppointmentForm/>} />
           </Route>
           <Route path='manufacturers'>
             <Route path="" element={<ManufacturerList />}  />

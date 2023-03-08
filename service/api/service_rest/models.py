@@ -23,9 +23,11 @@ class Technician(models.Model):
 
 class ServiceAppointment(models.Model):
     owner_name = models.CharField(max_length=200)
-    date_time = models.DateTimeField(auto_now=False, auto_now_add=False)
+    date = models.DateField(auto_now=False, auto_now_add=False)
+    time = models.TimeField(auto_now=False, auto_now_add=False)
     reason = models.TextField()
     vip = models.BooleanField(default=False)
+    status = models.BooleanField(default=False)
     technician = models.ForeignKey(
         Technician,
         related_name='appointments',
@@ -34,6 +36,6 @@ class ServiceAppointment(models.Model):
     vin = models.CharField(max_length=17)
 
     def __str__(self):
-        return f'{self.owner_name}{self.reason}{self.vin}{self.technician}'
+        return f'{self.owner_name}{self.reason}{self.vin}{self.technician}{self.time}'
     def get_api_url(self):
         return reverse("api_appointment", kwargs={"pk":self.id})
