@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function VehicleForm(props){
+function VehicleForm(){
     const [manufacturers, setManufacturers] = useState([]);
     const [manufacturer, setManufacturer] = useState('');
     const [name, setVehicle] = useState('');
@@ -80,7 +80,7 @@ function VehicleForm(props){
                     <div className="form-floating mb-3">
                         <select onChange={handleManufacturerChange} value={manufacturer} id="manufacturer_id" name="manufacturer_id" className="form-select">
                             <option value=''>Vehicle's Manufacturer</option>
-                            {props.manufacturers.map(manufacturer => {
+                            {manufacturers.map(manufacturer => {
                                 return (
                                     <option key={manufacturer.id} value={manufacturer.id}>
                                         {manufacturer.name}

@@ -18,16 +18,16 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path='vehicles'>
             <Route path='' element={<VehicleList/>} />
-            <Route path='new' element={<VehicleForm manufacturers={props.manufacturers}/>} />
+            <Route path='new' element={<VehicleForm />} />
           </Route>
           <Route path="inventory">
-            <Route path='' element={<InventoryList automobiles={props.automobiles} />}  />
+            <Route path='' element={<InventoryList />}  />
           </Route>
           <Route path="appointments/">
             <Route path="" element={<ServiceAppointmentList/>} />
           </Route>
           <Route path='manufacturers'>
-            <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />}  />
+            <Route path="" element={<ManufacturerList />}  />
             <Route path="new" element={<ManufacturerForm />} />
           </Route>
           <Route path='technician' element={<Technician/>}/>
