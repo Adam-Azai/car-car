@@ -8,7 +8,7 @@ import VehicleForm from './VehicleForm';
 import InventoryList from './InventoryList';
 import Technician from './Technician';
 import ServiceAppointmentList from './AppointmentList';
-import AutomobileForm from './AutomobileForm';
+import AutomobileForm from './InventoryForm';
 import SalesCustomerForm from './SalesCustomerForm';
 import SalespersonForm from './SalespersonForm';
 import SalesRecordList from './SalesRecordsList';
@@ -31,7 +31,7 @@ function App(props) {
             <Route path='' element={<InventoryList />}  />
             <Route path='new' element={<AutomobileForm automobiles={props.vehicles} />} />
           </Route>
-          <Route path="appointments/">
+          <Route path="appointments">
             <Route path="" element={<ServiceAppointmentList/>} />
             <Route path='new' element={<AppointmentForm/>} />
           </Route>
@@ -42,8 +42,10 @@ function App(props) {
           <Route path='technician' element={<Technician/>}/>
           <Route path="customer/new" element={<SalesCustomerForm/>}/>
           <Route path="salesperson/new" element={<SalespersonForm/>}/>
-          <Route path="salesrecords" element={<SalesRecordList/>}/>
-          <Route path="salesrecords/new" element={<SalesRecordForm/>}/>
+          <Route path="salesrecords">
+            <Route path="" element={<SalesRecordList/>} />
+            <Route path="new" element={<SalesRecordForm/>}/>
+          </Route>
           <Route path="records" element={<History/>}/>
         </Routes>
       </div>

@@ -78,6 +78,7 @@ function AutomobileForm(){
 
             <div className='form-floating mb-3'>
               <input value={color} onChange={handleColorChange} name="name" placeholder="Color" id="name" required type="text" className="form-control" />
+              <label> </label>
             </div>
 
             <div className='form-floating mb-3'>
