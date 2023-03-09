@@ -24,18 +24,14 @@ class ServiceAppointmentEncoder(ModelEncoder):
     properties = [
         'id',
         'owner_name',
-        'date_time',
+        'date',
+        'time',
         'reason',
         'vin',
         'technician',
-        'vip'
+        'vip',
+        'status'
     ]
     encoders = {
         'technician': TechnicianEncoder()
     }
-
-    # def get_extra_data(self, o):
-    #     if VinVO.objects.filter(vin=o.vin).count() > 0:
-    #         return {"vip": True}
-    #     else:
-    #         return {"vip": False}

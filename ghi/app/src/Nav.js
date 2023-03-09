@@ -26,6 +26,9 @@ function Nav() {
               <NavLink className='nav-link' to='appointments'>View Appointments</NavLink>
             </li>
             <li>
+              <NavLink className='nav-link' to='appointments/new'>Create an Appointment</NavLink>
+            </li>
+            <li>
               <NavLink className='nav-link' to="inventory">Inventory</NavLink>
             </li>
             <li>
@@ -45,6 +48,9 @@ function Nav() {
             </li>
             <li>
               <NavLink className='nav-link' to="salesrecords/new">New Sale</NavLink>
+            </li>
+            <li>
+              <NavLink className='nav-link' to='records'>Service History</NavLink>
             </li>
           </ul>
         </div>
