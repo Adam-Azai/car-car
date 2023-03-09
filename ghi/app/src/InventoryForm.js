@@ -81,7 +81,7 @@ function AutomobileForm(){
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={vin} onChange={handleVinChange} name="name" placeholder="VIN" id="name" required type="text" className="form-control" />
+              <input value={vin} maxlength="17" onChange={handleVinChange} name="name" placeholder="VIN" id="name" required type="text" className="form-control" />
             </div>
 
 
