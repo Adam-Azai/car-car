@@ -6,6 +6,10 @@ Team:
 
 CarCar is a Car Dealership website in which both customers and employees of the site can utilize for inquires of the vehicles in stock, schedule a service appointment, or recording a vehicle sale.
 
+The backend portion of this project was created with the use of Django, Python and JSON.
+
+The frontend of this project was created with the use of Javascript, HTML, CSS. With React rendering the front-end side of the application.
+
 ## Requirements to Run
 
 1. A Browser (Google Chrome preferred)
@@ -100,7 +104,7 @@ The service microservice has fully-accessible API that holds the technicians, an
 
 The tables below will describe how to access the endpoints as well as the URLS for them as well.
 
-### Service Appointment
+### Service Appointment API
 
 From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
 
@@ -178,11 +182,26 @@ The list of appointments is a dictionary with the key of "appointments" set to a
     ]
 }
 ```
-Return value of deleteing an appointment by its id is a simple delete message on wheter the appointment was successfuly deleted
-```{
+Return value of deleting an appointment by its id is a simple delete message on whether the appointment was successfully deleted
+```
+{
     "deleted':true
 }
 ```
+
+### Technician API
+
+From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
+
+| Action                             |   Method      |                   URL                     |
+|:----------------------------------:|:-------------:|:-----------------------------------------:|
+| List technicians                   | GET           | http://localhost:8080/api/technicians/    |
+| Create technician                  | POST          | http://localhost:8080/api/technicians/    |
+
+
+
+
+
 ## Sales microservice
 
 Explain your models and integration with the inventory

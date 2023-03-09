@@ -42,7 +42,7 @@ function ServiceAppointmentList(){
                         {appointment.vip == true && <td><img src='https://cdn-icons-png.flaticon.com/512/3557/3557655.png' width="40px"/></td>}
                         {appointment.vip == false && <td><img src="https://st.depositphotos.com/1054979/3064/v/450/depositphotos_30640773-stock-illustration-loser-stamp.jpg" width="60px"/></td>}
                         <td>{new Date(appointment.date).toLocaleDateString()}</td>
-                        <td>{String(appointment.time)}</td>
+                        <td>{new Date(appointment.time).toLocaleTimeString('en-US')}</td>
                         <td>{appointment.reason}</td>
                         <td>{appointment.vin}</td>
                         <td>{appointment.technician.technician_name}</td>

@@ -3,6 +3,7 @@ from django.urls import NoReverseMatch
 from django.db.models import QuerySet
 from datetime import date, time
 
+
 class DateEncoder(JSONEncoder):
     def default(self, o):
         if isinstance(o, date):
