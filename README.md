@@ -106,13 +106,13 @@ The tables below will describe how to access the endpoints as well as the URLS f
 
 From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
 
-| Action            |   Method      |  URL  |
-|:-----------------:|:-------------:|:-----:|
-| List appointments | right-aligned | $1600 |
-| col 2 is          | centered      |   $12 |
-| zebra stripes     | are neat      |    $1 |
-
-
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
+| List appointments                  | GET           | http://localhost:8080/api/appointments/                           |
+| Get appointments by VIN            | GET           | http://localhost:8080/api/appointments/records/:vin_vo_id         |
+| Create appointment                 | POST          | http://localhost:8080/api/appointments/                           |
+| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/:id                        |
+| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/:id                        |
 
 ## Sales microservice
 
