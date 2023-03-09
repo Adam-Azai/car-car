@@ -41,7 +41,7 @@ class SalesRecord(models.Model):
     related_name="salesrecords",
       on_delete=models.CASCADE,
   )
-  sales_price = models.CharField(max_length=250)
+  sales_price = models.PositiveIntegerField()
 
   def __str__(self):
     return f'{self.automobile}'

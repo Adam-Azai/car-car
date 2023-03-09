@@ -33,7 +33,7 @@ function SalesRecordForm(){
       setSalesperson('');
       setCustomer('');
       setSalesPrice('');
-    } 
+    }
   }
   const handleAutomobileChange = (event) => {
     const value = event.target.value
@@ -126,7 +126,7 @@ function SalesRecordForm(){
 
             <div className="form-group">
               <label>Sales Price</label>
-              <input  value={sales_price} onChange={handleSalesPriceChange}  type="number" className="form-control"  placeholder="Enter Sale Amount"/>
+              <input  value={sales_price} onChange={handleSalesPriceChange}  type="number" min="0" className="form-control"  placeholder="Enter Sale Amount"/>
               <small id="salespricesubtext" className="form-text text-muted">Total sales price before taxes</small>
             </div>
 
