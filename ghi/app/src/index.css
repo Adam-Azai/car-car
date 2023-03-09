@@ -20,3 +20,6 @@ code {
   scale: 95%;
 }
 
+.dropdown-item.active, .dropdown-item:active{
+  background-color: white !important;
+}

@@ -24,12 +24,10 @@ function SalesCustomerForm() {
     const customerResponse = await fetch(customerUrl, fetchConfig)
     if (customerResponse.ok) {
       const newCustomer = await customerResponse.json()
-      console.log(newCustomer)
+
       setName('')
       setAddress('')
       setPhone('')
-    } else {
-      console.log('Bad Customer Response')
     }
   }
   const handleNameChange = (event) => {

@@ -18,7 +18,6 @@ function SalesRecordForm(){
     data.customer = customer
     data.sales_price = sales_price
 
-    console.log(data)
 
     const salesRecordUrl ='http://localhost:8090/api/salesrecords/'
     const fetchConfig = {
@@ -34,9 +33,7 @@ function SalesRecordForm(){
       setSalesperson('');
       setCustomer('');
       setSalesPrice('');
-    } else {
-      console.log('Bad Sales Record Response')
-    }
+    } 
   }
   const handleAutomobileChange = (event) => {
     const value = event.target.value

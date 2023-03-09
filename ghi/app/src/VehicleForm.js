@@ -9,7 +9,6 @@ function VehicleForm(){
     const handleSubmit = async(event) =>{
         event.preventDefault()
         const data = {};
-        console.log(data)
         data.name = name
         data.picture_url = image
         data.manufacturer_id = manufacturer
@@ -24,14 +23,10 @@ function VehicleForm(){
         const vehicleResponse = await fetch(vehicleUrl, fetchConfig)
         if (vehicleResponse.ok){
             const newVehicle = await vehicleResponse.json()
-            console.log(newVehicle)
             setManufacturer('');
             setImage('');
             setVehicle('');
-        } else {
-            console.log('fail')
         }
-        console.log(data)
     }
 
     const handleVehicleChange = (event) => {
@@ -46,7 +41,6 @@ function VehicleForm(){
         const value = event.target.value
         setManufacturer(value)
     }
-
 
 
     // function below grabs the list of manufacturers so the drop down select can display the manufacturers we have in our database

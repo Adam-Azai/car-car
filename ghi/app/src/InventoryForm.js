@@ -11,12 +11,10 @@ function AutomobileForm(){
     event.preventDefault();
 
     const data = {}
-
     data.color = color
     data.year = year
     data.vin = vin
     data.model_id = model
-
     const automobileUrl = 'http://localhost:8100/api/automobiles/'
     const fetchConfig ={
       method: 'post',
@@ -28,13 +26,10 @@ function AutomobileForm(){
     const automobileResponse = await fetch(automobileUrl, fetchConfig)
     if (automobileResponse.ok) {
       const newAutomobile = await automobileResponse.json()
-      console.log(newAutomobile)
       setColor('');
       setYear('');
       setVin('');
       setModel('');
-    } else {
-      console.log('Bad Automobile Response')
     }
   }
   const handleColorChange = (event) => {

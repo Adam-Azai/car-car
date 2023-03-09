@@ -22,13 +22,11 @@ function SalespersonForm() {
     const salespersonResponse = await fetch(salespersonUrl, fetchConfig)
     if (salespersonResponse.ok) {
       const newSalesperson = await salespersonResponse.json()
-      console.log(newSalesperson)
+
       setName('')
       setEmployeeNumber('')
 
-    } else {
-      console.log('Bad Salesperson Response')
-    }
+    } 
   }
   const handleNameChange = (event) => {
     const value = event.target.value
