@@ -8,7 +8,7 @@ CarCar is a Car Dealership website in which both customers and employees of the 
 
 The backend portion of this project was created with the use of Django, Python and JSON.
 
-The frontend of this project was created with the use of Javascript, HTML, CSS. With React rendering the front-end side of the application.
+The frontend of this project was created with the use of Javascript, HTML, JSON, and CSS. With React rendering the front-end side of the application.
 
 ## Requirements to Run
 
@@ -50,9 +50,6 @@ To start CarCar in your browser please follow the instructions listed below.
 ## Design
 Below is a diagram that displays how the three microservices in the project communicate with one another to retrieve information from one another. The models of each microservice as well their fields are displayed as well.
 
-
-
-
 https://i.imgur.com/UdfOD0g.png
 
 
@@ -60,13 +57,7 @@ https://i.imgur.com/UdfOD0g.png
 ![A diagram entailing the Architecture Design of our Project](https://i.imgur.com/UdfOD0g.png)
 
 
-
-
-
 ## Service microservice
-
-Explain your models and integration with the inventory
-microservice, here.
 
 The purpose of the Service microservice is to handle the dealership's vehicle maintenance department. There are four features of the maintenance department that the Service microservice handles. The first feature is that an employee can register a new car technician that will be available for service apPointments. The second feature is that any car owner can schedule a service appointment for their vehicle, one does not have to purchase a vehicle from the dealership to receive service. The third feature is a table to view upcoming scheduled service appointments with the capability of removing them from the table when a customer cancels the appointment or when the service has been completed. The table also informs technicians/concierge on which customers are VIPS, customers who bought the car from the dealership, in order to show preferential treatment to the VIP customers. The final feature is a search function for employees to pull the service history of a vehicle based on the vehicle's VIN.
 
@@ -97,6 +88,9 @@ Finally the VinVO model is a Value Object model that holds that data that is bei
 VinVO Model
 - import_href: the automobile's href
 - vin: the VINs of automobiles that were in our inventory in the past
+
+
+The Service Microservice is located on port 8080, its api being accessible by your browser on localhost:8080
 
 ## Service API
 
@@ -198,8 +192,38 @@ From Insomnia and your browser, you can access the service appointment endpoints
 | List technicians                   | GET           | http://localhost:8080/api/technicians/    |
 | Create technician                  | POST          | http://localhost:8080/api/technicians/    |
 
-
-
+Creating a technician requires just the technician's name as well as their employee id.
+```
+{
+	"technician_name":"Imron",
+	"employee_number":"1"
+}
+```
+The return of creating a technician simply returns the id of the technician alongside the technician's name and employee id
+```
+{
+    	"id": 1,
+			"technician_name": "Imron",
+			"employee_number": "1"
+}
+```
+Getting the list of technicians returns a dictionary with the key of "technicians' set to a list of technicians
+```
+{
+    "technicians": [
+		{
+			"id": 1,
+			"technician_name": "Imron",
+			"employee_number": "1"
+		},
+		{
+			"id": 2,
+			"technician_name": "Derek",
+			"employee_number": "39"
+		}
+	]
+}
+```
 
 
 ## Sales microservice
