@@ -1,7 +1,7 @@
 # CarCar
 
 Team:
-* Person 1 - Adam Azai
+* Adam Azai - Service Microservice
 * Person 2 - Which microservice?
 
 CarCar is a Car Dealership website in which both customers and employees of the site can utilize for inquires of the vehicles in stock, schedule a service appointment, or recording a vehicle sale.
@@ -25,15 +25,38 @@ To start CarCar in your browser please follow the instructions listed below.
 4. Upon cloning a new directory will appear in the directory you cloned the repo into.
 5. Navigate to the new directory named "Project-Beta"
 6. This project relies on Docker to ensure an isolated environment for the app, start the Docker Desktop application.
-7. Once Docker Desktop is running you will need to create a docker volume that will hold the data for CarCar with the following commmand.
+7. Once Docker Desktop is running you will need to create a docker volume that will hold the data for CarCar with the following    command.
     ```
-    docker volume create "docker beta-data"
+    docker volume create "beta-data"
     ```
-8.
-
-
+8. Now build the docker images by running the command below in the project directory within your terminal command line
+    ```
+    docker compose build
+    ```
+9. Finally to build the containers and run the application run the command below in your terminal command line
+    ```
+    docker compose up
+    ```
+10. Verify that the containers were created within Docker Desktop and none of the containers have stopped running. In total there   should be 7 containers.
+11. When the app's server is up and running the terminal window will display a message stating that the server was complied
+12. Open your browser and input the url (localhost:3000)
+13. The main page of CarCar will be on display when navigating to localhost:3000
+14. Feel free to play around the site and please send any feedback you have regarding the project.
 
 ## Design
+Below is a diagram that displays how the three microservices in the project communicate with one another to retrieve information from one another. The models of each microservice as well their fields are displayed as well.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -43,7 +66,63 @@ To start CarCar in your browser please follow the instructions listed below.
 Explain your models and integration with the inventory
 microservice, here.
 
+The purpose of the Service microservice is to handle the dealership's vehicle maintenance department. There are four features of the maintenance department that the Service microservice handles. The first feature is that an employee can register a new car technician that will be available for service apPointments. The second feature is that any car owner can schedule a service appointment for their vehicle, one does not have to purchase a vehicle from the dealership to receive service. The third feature is a table to view upcoming scheduled service appointments with the capability of removing them from the table when a customer cancels the appointment or when the service has been completed. The table also informs technicians/concierge on which customers are VIPS, customers who bought the car from the dealership, in order to show preferential treatment to the VIP customers. The final feature is a search function for employees to pull the service history of a vehicle based on the vehicle's VIN.
+
+
+There are three models for the Service microservice. The three models being a Technician models, a Service Appointment model and finally a VinVO models.
+
+The Technician models is fairly simple, there are two character fields(technician_name and employee_id) to contain the technician's name and their employee id.
+
+Technician Model
+- technician_name: name of the technician
+- employee_number: id number of the technician
+
+
+The Service Appointment model is composed of multiple diverse fields. Within this model there are simple character fields to hold information such as the vehicle owner's name, the date/time of the appointment, reasoning for service appointment, and the vin of the vehicle being serviced. The vip and status fields are booleans that allow us to distinguish whether a customer is a vip or whether the service appointment was canceled/finished respectively. The technician field is a foreign key that pulls the technician_name data from the Technician Model in order to attach a single technician to a service appointment. The importance of this model is that the VIN field will be the determining factor of whether a customer is a VIP by polling data from the Inventory Microservice.
+
+Service Appointment Model
+- owner_name: the name of the vehicle's owner
+- date: the date of the appointment
+- time: the time of the appointment
+- reason: why is the car getting serviced(oil change, tire change, battery replacement)
+- vip: if the car was purchased from our dealership then a vip status icon is displayed
+- status: whether the car's service is done or the appointment was canceled
+- technician: the technician who will be working on the vehicle
+
+
+Finally the VinVO model is a Value Object model that holds that data that is being polled from the Inventory microservice's automobile model. The service poll application gathers the vins of the automobiles we had in our inventory to compare whether the vin of customers scheduling a service appointment matches. If the vin field of a service appointment has been within the inventory of cars in the past this signifies that the customer purchased the vehicle from the dealership. Customers who purchase and service their car at the same dealership are labeled as VIPS and are given preferential treatment.
+
+VinVO Model
+- import_href: the automobile's href
+- vin: the VINs of automobiles that were in our inventory in the past
+
+## Service API
+
+The service microservice has fully-accessible API that holds the technicians, and service appointments. It has functional RESTful endpoints for the Technician and Service Appointment models.
+
+The tables below will describe how to access the endpoints as well as the URLS for them as well.
+
+### Service Appointment
+
+From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
+
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
+| List appointments                  | GET           | http://localhost:8080/api/appointments/                           |
+| Get appointments by VIN            | GET           | http://localhost:8080/api/appointments/records/:vin_vo_id         |
+| Create appointment                 | POST          | http://localhost:8080/api/appointments/                           |
+| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/:id                        |
+| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/:id                        |
+
 ## Sales microservice
 
 Explain your models and integration with the inventory
 microservice, here.
+
+
+
+
+
+
+
+## Inventory microservice
