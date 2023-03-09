@@ -78,15 +78,17 @@ function AutomobileForm(){
 
             <div className='form-floating mb-3'>
               <input value={color} onChange={handleColorChange} name="name" placeholder="Color" id="name" required type="text" className="form-control" />
-              <label> </label>
+              <label>Color</label>
             </div>
 
             <div className='form-floating mb-3'>
               <input value={year} onChange={handleYearChange} name="name" placeholder="Year" id="name" required type="text" className="form-control" />
+              <label>Year</label>
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={vin} onChange={handleVinChange} name="name" placeholder="VIN" id="name" required type="text" className="form-control" />
+              <input value={vin} onChange={handleVinChange} name="name" placeholder="VIN Number" id="name" required type="text" className="form-control" />
+              <label>VIN Number</label>
             </div>
 
 
