@@ -109,7 +109,7 @@ def api_sales_record_list(request, automobile_vo_id=None):
 @require_http_methods(["GET", "DELETE"])
 def api_employee_sales_record(request,id):
   if request.method == "GET":
-    salesrecord = SalesRecord.objects.filter(id=name)
+    salesrecord = SalesRecord.objects.filter(salesperson=id)
     return JsonResponse(
       salesrecord,
       encoder=SalesRecordEncoder,

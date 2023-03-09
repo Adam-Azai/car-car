@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react'
 
 function SalesRecordList() {
   const [records, setRecords] = useState([])
+  // const [id, setId] = useState =([])
 
   const fetchData = async () => {
     const recordsUrl = 'http://localhost:8090/api/salesrecords/'
+    // const employeeRecordUrl = `http://localhost:8090/api/salesrecords/${id}`
     try {
+      // const employeeResponse = await fetch(employeeRecordUrl)
+      // if(employeeResponse.ok) {
+      //   const data = await employeeResponse.json()
+      //   setId(data.employeeRecords)
+      // }
+
       const response = await fetch(recordsUrl)
       if(response.ok) {
         const data = await response.json()
@@ -21,7 +29,11 @@ function SalesRecordList() {
 
   return (
     <>
+
     <table className="table table-striped">
+    <select class="form-control">
+      <option>Filter by Salesperson</option>
+    </select>
       <thead>
         <tr>
           <th>Salesperson</th>
