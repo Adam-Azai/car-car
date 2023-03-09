@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import "./index.css"
+
 
 function Nav() {
   return (
@@ -10,48 +12,64 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li>
-            <NavLink className="nav-link" to="manufacturers">Manufacturers</NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link" to="/manufacturers/new">Create a manufacturer</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="vehicles">Vehicles</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="vehicles/new">Create a Vehicle</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to='appointments'>View Appointments</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to='appointments/new'>Create an Appointment</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="inventory">Inventory</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="technician">Technician</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="inventory/new">Add to inventory</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="customer/new">Create Customer</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="salesperson/new">Create Salesperson</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="salesrecords">Sales Records</NavLink>
-            </li>
-            <li>
-              <NavLink className='nav-link' to="salesrecords/new">New Sale</NavLink>
-            </li>
-            <li>
+          <div className="dropdown">
+          <button className="btn dropdown-toggle text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+            Manufacturer
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <NavLink className="dropdown-item nav-link dropdown-item text-dark" to="manufacturers">Manufacturers</NavLink>
+            <NavLink className="nav-link dropdown-item text-dark" to="/manufacturers/new">Create a manufacturer</NavLink>
+          </div>
+          </div>
+          <div className="dropdown">
+          <button className="btn dropdown-toggle text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+            Vehicles
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <NavLink className="nav-link dropdown-item text-dark" to="vehicles">Vehicles</NavLink>
+            <NavLink className="nav-link dropdown-item text-dark" to="vehicles/new">Create a Vehicle</NavLink>
+          </div>
+          </div>
+          <div className="dropdown">
+          <button className="btn dropdown-toggle text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+            Inventory
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <NavLink className='nav-link dropdown-item text-dark' to="inventory">Inventory</NavLink>
+            <NavLink className="nav-link dropdown-item text-dark" to="inventory/new">Add to inventory</NavLink>
+          </div>
+          </div>
+          <div className="dropdown">
+          <button className="btn dropdown-toggle text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+            Appointments
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <NavLink className='nav-link dropdown-item text-dark' to='appointments'>View Appointments</NavLink>
+            <NavLink className="nav-link dropdown-item text-dark" to="appointments/new">Schedule a Service Appointment</NavLink>
+          </div>
+          </div>
+          <div className="dropdown">
+          <button className="btn dropdown-toggle text-white " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+            Record of Sales
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <NavLink className='nav-link dropdown-item text-dark text-center' to="salesrecords">Sales Records</NavLink>
+            <NavLink className="nav-link dropdown-item text-dark text-center"  to="salesrecords/new">Record a Sale</NavLink>
+          </div>
+          </div>
+          <li>
               <NavLink className='nav-link' to='records'>Service History</NavLink>
-            </li>
+          </li>
+          <li>
+              <NavLink className='nav-link' to="technician">Register a Technician</NavLink>
+          </li>
+          <li>
+              <NavLink className='nav-link' to="customer/new">Create Customer</NavLink>
+          </li>
+          <li>
+              <NavLink className='nav-link' to="salesperson/new">Create Salesperson</NavLink>
+          </li>
+
           </ul>
         </div>
       </div>

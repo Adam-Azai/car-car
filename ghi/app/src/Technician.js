@@ -7,7 +7,6 @@ function Technician() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {}
-        console.log(data)
         data.technician_name = technicianName
         data.employee_number = employeeNumber
         const technicianUrl = "http://localhost:8080/api/technicians/"
@@ -24,9 +23,8 @@ function Technician() {
             setTechnicianName("");
             setID("");
             alert(`${technicianName} has been added to our Employee Directory`)
-            console.log(newTechnician)
         } else{
-            console.log('why')
+
         }
     }
     const handleTechnicianChange= (event) => {
