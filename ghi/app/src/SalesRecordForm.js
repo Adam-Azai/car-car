@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 function SalesRecordForm(){
   const [automobile, setAutomobile] = useState('');
-  const [automobiles, setAutomobiles] = useState([]);
   const [salesperson, setSalesperson] = useState('');
   const [customer, setCustomer] = useState('');
   const [sales_price, setSalesPrice] = useState('');
-
+  const [automobiles, setAutomobiles] = useState([]);
+  const [seller, setSeller] = useState([]);
+  const [buyer, setBuyer] = useState([]);
   const handleSubmit = async(event) => {
     event.preventDefault();
 
@@ -16,6 +17,8 @@ function SalesRecordForm(){
     data.salesperson = salesperson
     data.customer = customer
     data.sales_price = sales_price
+
+    console.log(data)
 
     const salesRecordUrl ='http://localhost:8090/api/salesrecords/'
     const fetchConfig = {
@@ -27,7 +30,6 @@ function SalesRecordForm(){
     }
     const salesRecordResponse = await fetch(salesRecordUrl, fetchConfig)
     if (salesRecordResponse.ok) {
-      const newSalesRecord = await salesRecordResponse.json()
       setAutomobile('');
       setSalesperson('');
       setCustomer('');
@@ -61,10 +63,20 @@ function SalesRecordForm(){
     const automobileResponse = await fetch(automobileUrl);
       if (automobileResponse.ok) {
         const automobileData = await automobileResponse.json();
-        // if automobileData.automobiles.availability == false
         setAutomobiles(automobileData.automobiles)
-
       }
+      const sellerUrl= 'http://localhost:8090/api/salespeople/'
+      const sellerResponse = await fetch(sellerUrl);
+        if (sellerResponse.ok) {
+          const sellerData = await sellerResponse.json();
+          setSeller(sellerData.salespeople)
+        }
+        const buyerUrl= 'http://localhost:8090/api/customers/'
+        const buyerResponse = await fetch(buyerUrl);
+          if (buyerResponse.ok) {
+            const buyerData = await buyerResponse.json();
+            setBuyer(buyerData.customers)
+          }
   }
   useEffect( () => {
     fetchModelData()
@@ -81,13 +93,48 @@ function SalesRecordForm(){
                 <option value=''>Choose an Automobile</option>
                 {automobiles.filter(automobile => automobile.availability).map(automobile => {
                   return (
-                    <option key={ automobile.id } value={ automobile.id }>
+                    <option key={ automobile.id } value={ automobile.vin }>
                       {automobile.vin}
                     </option>
                   )
                 })}
               </select>
             </div>
+
+            <div className="form-floating mb-3">
+              <select onChange={handleSalespersonChange} value={salesperson} id="salesperson" name="salesperson" className="form-select">
+                <option value=''>Choose an Salesperson</option>
+                {seller.map(seller => {
+                  return (
+                    <option key={ seller.id } value={ seller.name }>
+                      {seller.name}
+                    </option>
+                  )
+                })}
+              </select>
+            </div>
+
+            <div className="form-floating mb-3">
+              <select onChange={handleCustomerChange} value={customer} id="customer" name="customer" className="form-select">
+                <option value=''>Choose an Customer</option>
+                {buyer.map(buyer => {
+                  return (
+                    <option key={ buyer.id } value={ buyer.name }>
+                      {buyer.name}
+                    </option>
+                  )
+                })}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Sales Price</label>
+              <input  value={sales_price} onChange={handleSalesPriceChange}  type="number" className="form-control"  placeholder="Enter Sale Amount"/>
+              <small id="salespricesubtext" className="form-text text-muted">Total sales price before taxes</small>
+            </div>
+
+
+
             <button className="btn btn-primary">Create</button>
 
           </form>
