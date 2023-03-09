@@ -37,6 +37,9 @@ function Nav() {
             <li>
               <NavLink className='nav-link' to="inventory/new">Add to inventory</NavLink>
             </li>
+            <li>
+              <NavLink className='nav-link' to='records'>Service History</NavLink>
+            </li>
           </ul>
         </div>
       </div>

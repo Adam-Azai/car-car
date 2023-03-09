@@ -44,7 +44,7 @@ def api_list_service_appointment(request, vin_vo_id=None):
         if vin_vo_id is not None:
             appointments = ServiceAppointment.objects.filter(vin=vin_vo_id)
             return JsonResponse(
-                appointments,
+                {"appointments": appointments},
                 encoder=ServiceAppointmentEncoder,
                 safe=False
             )
@@ -85,7 +85,7 @@ def api_list_service_appointment(request, vin_vo_id=None):
                     safe=False
             )
 
-@require_http_methods(["GET", "DELETE"])
+@require_http_methods(["GET", "DELETE", "PUT"])
 def api_service_appointment(request,id):
     # displays the appointments associated with the vin number
     if request.method == "GET":
@@ -95,6 +95,16 @@ def api_service_appointment(request,id):
             encoder=ServiceAppointmentEncoder,
             safe=False
             )
-    else:
+    elif request.method =="DELETE":
         count, _ = ServiceAppointment.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
+    else:
+        content = json.loads(request.body)
+        appointment = ServiceAppointment.objects.filter(pk=id)
+        content['status'] = True
+        ServiceAppointment.objects.filter(id=id).update(**content)
+        return JsonResponse(
+                appointment,
+                encoder=ServiceAppointmentEncoder,
+                safe=False
+            )

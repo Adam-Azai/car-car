@@ -67,7 +67,6 @@ class AppointmentForm extends React.Component {
             <div className="shadow p-4 mt-4">
                 <h2>Schedule an Appointment</h2>
             <form id="create-appointment" onSubmit={this.handleSubmit} >
-                {formState.isS}
                 <div className="form-floating mb-3">
                     <input value={this.state.owner_name} onChange={this.handleChange}  placeholder="name" required type="text" className="form-control" name="owner_name"/>
                     <label>Owner's Name</label>
