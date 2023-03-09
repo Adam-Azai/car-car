@@ -114,6 +114,77 @@ From Insomnia and your browser, you can access the service appointment endpoints
 | Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/:id                        |
 | Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/:id                        |
 
+Creating an appointment requires the vehicle owner name, date of the appointment, time of the appointment, reason for the appointment, the technician who will be service the vehicle, and a VIN(17 letters).
+```
+    {
+	"owner_name":"Billy",
+	"date": "2023-03-07",
+	"time":"10:50:30",
+	"reason": "Oil change",
+	"technician": "Samantha",
+	"vin": "A1B2C3D4E5F6G7H8I"
+}
+```
+The return value of creating an appointment, updating an appointment, and getting an appointment by its VIN, is its id, owner_name, data, time, reason, vin, a technician object with: technician's id, technician name, employee_number, vip, and status. If the vin matches a vin that is within the inventory api then the vip boolean would return true, on default it returns false. Status will always return false when creating an appointment as the appointment was just created and has not been completed nor canceled. If the appointment is being updated then only the status will updated to be set to true.
+```
+{
+	"id": 1,
+	"owner_name": "Billy",
+	"date": "2023-03-07",
+	"time": "10:50:30",
+	"reason": "Oil change",
+	"vin": "A1B2C3D4E5F6G7H8I",
+	"technician": {
+		"id": 1,
+		"technician_name": "Samantha",
+		"employee_number": "23"
+	},
+	"vip": false,
+	"status": false
+}
+```
+The list of appointments is a dictionary with the key of "appointments" set to a list of appointments
+```
+{
+	"appointments": [
+		{
+			"id": 1,
+			"owner_name": "Billy",
+			"date": "2023-03-07",
+			"time": "10:50:30",
+			"reason": "Oil change",
+			"vin": "A1B2C3D4E5F6G7H8I",
+            "technician": {
+                "id": 1,
+                "technician_name": "Samantha",
+                "employee_number": "23"
+            },
+            "vip": false,
+            "status": false
+		},
+		{
+			"id": 2,
+			"owner_name": "Eddie",
+			"date": "2023-03-09",
+			"time": "00:56:00",
+			"reason": "Oil change",
+			"vin": "5J8TB18208A013941",
+			"technician": {
+				"id": 2,
+				"technician_name": "Imron",
+				"employee_number": "31"
+			},
+			"vip": false,
+			"status": false
+		},
+    ]
+}
+```
+Return value of deleteing an appointment by its id is a simple delete message on wheter the appointment was successfuly deleted
+```{
+    "deleted':true
+}
+```
 ## Sales microservice
 
 Explain your models and integration with the inventory
