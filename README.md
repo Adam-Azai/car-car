@@ -79,6 +79,8 @@ Technician Model
 
 
 The Service Appointment model is composed of multiple diverse fields. Within this model there are simple character fields to hold information such as the vehicle owner's name, the date/time of the appointment, reasoning for service appointment, and the vin of the vehicle being serviced. The vip and status fields are booleans that allow us to distinguish whether a customer is a vip or whether the service appointment was canceled/finished respectively. The technician field is a foreign key that pulls the technician_name data from the Technician Model in order to attach a single technician to a service appointment. The importance of this model is that the VIN field will be the determining factor of whether a customer is a VIP by polling data from the Inventory Microservice.
+```
+{
 
 Service Appointment Model
     owner_name: the name of the vehicle's owner
@@ -88,7 +90,8 @@ Service Appointment Model
     vip: if the car was purchased from our dealership then a vip status icon is displayed
     status: whether the car's service is done or the appointment was canceled
     technician: the technician who will be working on the vehicle
-
+}
+```
 
 Finally the VinVO model is a Value Object model that holds that data that is being polled from the Inventory microservice's automobile model. The service poll application gathers the vins of the automobiles we had in our inventory to compare whether the vin of customers scheduling a service appointment matches. If the vin field of a service appointment has been within the inventory of cars in the past this signifies that the customer purchased the vehicle from the dealership. Customers who purchase and service their car at the same dealership are labeled as VIPS and are given preferential treatment.
 
