@@ -103,7 +103,7 @@ The tables below will describe how to access the endpoints as well as the URLS f
 
 <details>
 <summary><h3>Service Appointment API</h3></summary>
-<details>
+
 
 From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
 
@@ -192,7 +192,6 @@ Return value of deleting an appointment by its id is a simple delete message on 
 ```
 
 </details>
-
 
 
 <details>
