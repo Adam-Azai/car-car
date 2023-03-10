@@ -265,14 +265,18 @@ The purpose of the sales record is to tie in all the previously mentioned models
 
 
 To access the entire inventory regardless of availability status:
+<details>
+<summary><h3>Automobile<h3><summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
 
+</details>
 
+<details>
+<summary><h3>Customer<h3><summary>
 
-## Customer API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Customer List                      | GET           | http://localhost:8090/api/customers/                              |
@@ -286,9 +290,11 @@ An example of the json body for the create customer POST request:
 	"phone": "10010088454"
 }
 ```
+</details>
 
+<details>
+<summary><h3>Sales Record<h3><summary>
 
-## Sales Record API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Sales Record List                  | GET           | http://localhost:8090/api/salesrecords/                           |
@@ -305,10 +311,11 @@ An example of the json body for the sale record POST request:
 	"sales_price": "$1000"
     }
 ```
+</details>
 
+<details>
+<summary><h3>Saleperson</h3></summary>
 
-
-## Saleperson API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
@@ -321,7 +328,7 @@ An example of the json body for the Create a Salesperson POST request:
 	"employee_number": "00004"
 }
 ```
-
+</details>
 ## Inventory microservice
 
 The purpose of the Inventory microservice is to handle the storage and information of vehicles that the dealership contains, essentially an inventory of the dealership. There are six features within the Inventory microservice. The first feature is creating a manufacturer, an employee can input the manufacturers that the dealership may have/had in their inventory and with the second feature, display the manufacturers in a simple table. The other four features follow the same principle, with the pairs being a create form and viewing table of the inputted data of the form. An employee can input a model type of a vehicle(prius, camry, civic), an image of that vehicle along with a manufacturer, one that was added to the manufacturers database, that is displayed with a simple table. The last two features are a form that an employee can add an individual car to the dealership inventory by inputting the car's vin, year, color and the model type that the dealership offers.
