@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import ServiceAppointment, Technician
+from .models import ServiceAppointment, Technician, VinVO
 
 admin.site.register(ServiceAppointment)
 admin.site.register(Technician)
-# Register your models here.
+admin.site.register(VinVO)
