@@ -47,7 +47,7 @@ function Technician() {
                 <label htmlFor="technician_name">Technician's Name</label>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={handleIDChange} value={employeeNumber} placeholder="ID" required type="text" id="employee_number" name="employee_number" className="form-control"/>
+                <input onChange={handleIDChange} value={employeeNumber} maxLength="12" placeholder="ID" required type="text" id="employee_number" name="employee_number" className="form-control"/>
                 <label htmlFor="employee_number">Employee ID</label>
               </div>
               <div className='text-center'>

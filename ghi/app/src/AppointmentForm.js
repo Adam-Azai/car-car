@@ -72,7 +72,7 @@ class AppointmentForm extends React.Component {
                     <label>Owner's Name</label>
                 </div>
                    <div className="form-floating mb-3">
-                    <input value={this.state.vin} onChange={this.handleChange}  placeholder="VIN" required type="text" className="form-control" name="vin"/>
+                    <input value={this.state.vin} onChange={this.handleChange} maxLength="17" placeholder="VIN" required type="text" className="form-control" name="vin"/>
                     <label>Vehicle Identification Number</label>
                 </div>
                   <div className="form-floating mb-3">

@@ -25,7 +25,7 @@ function AutomobileForm(){
     }
     const automobileResponse = await fetch(automobileUrl, fetchConfig)
     if (automobileResponse.ok) {
-      const newAutomobile = await automobileResponse.json()
+
       setColor('');
       setYear('');
       setVin('');
@@ -77,12 +77,12 @@ function AutomobileForm(){
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={year} onChange={handleYearChange} name="name" placeholder="Year" id="name" required type="text" className="form-control" />
+              <input value={year} onChange={handleYearChange} maxLength="4" name="name" placeholder="Year" id="name" required type="text" className="form-control" />
               <label>Year</label>
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={vin} onChange={handleVinChange} name="name" placeholder="VIN Number" id="name" required type="text" className="form-control" />
+              <input value={vin} onChange={handleVinChange} maxLength="17" name="name" placeholder="VIN Number" id="name" required type="text" className="form-control" />
               <label>VIN Number</label>
             </div>
 

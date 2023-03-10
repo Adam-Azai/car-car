@@ -23,7 +23,7 @@ function SalesCustomerForm() {
     }
     const customerResponse = await fetch(customerUrl, fetchConfig)
     if (customerResponse.ok) {
-      const newCustomer = await customerResponse.json()
+
 
       setName('')
       setAddress('')
@@ -60,7 +60,7 @@ function SalesCustomerForm() {
             </div>
 
             <div className="form-cloating mb-3">
-              <input value={phone} onChange={handlePhoneChange} name="name" placeholder="Customer Phone Number" id="name" required type="text" className="form-control" />
+              <input value={phone} onChange={handlePhoneChange} maxLength="16" name="name" placeholder="Customer Phone Number" id="name" required type="text" className="form-control" />
             </div>
           <button className="btn btn-primary">Create</button>
           </form>

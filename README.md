@@ -120,9 +120,27 @@ Explain your models and integration with the inventory
 microservice, here.
 
 
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
+| Customer List                      | GET           | http://localhost:8090/api/customers/                              |
+| Create Potential Customer          | POST          | http://localhost:8090/api/customers/                              |
+| Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
+| Create a Salesperson               | POST          | http://localhost:8090/api/salespeople/                            |
+| Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
+| Sales Record List                  | GET           | http://localhost:8090/api/salesrecords/                           |
+| Create a Sales Record              | POST          | http://localhost:8090/api/salesrecords/                           |
+| Get Specific Salesperson's Records | GET           | http://localhost:8090/api/salesrecords/:id/                       |
+| Delete a specific Sales Record     | Delete        | http://localhost:8090/api/salesrecords/:id/                       |
 
 
+An example for the json body for the sale record POST request:
+    {
+	"salesperson": "Jennifer",
+	"automobile": "567VIN",
+	"customer": "Joshua",
+	"sales_price": "$1000"
+    }
 
-
+An example
 
 ## Inventory microservice
