@@ -67,32 +67,32 @@ There are three models for the Service microservice. The three models being a Te
 The Technician models is fairly simple, there are two character fields(technician_name and employee_id) to contain the technician's name and their employee id.
 
 Technician Model
-- technician_name: name of the technician
-- employee_number: id number of the technician
+- technician_name: (string) name of the technician
+- employee_number: (string) id number of the technician
 
 
 The Service Appointment model is composed of multiple diverse fields. Within this model there are simple character fields to hold information such as the vehicle owner's name, the date/time of the appointment, reasoning for service appointment, and the vin of the vehicle being serviced. The vip and status fields are booleans that allow us to distinguish whether a customer is a vip or whether the service appointment was canceled/finished respectively. The technician field is a foreign key that pulls the technician_name data from the Technician Model in order to attach a single technician to a service appointment. The importance of this model is that the VIN field will be the determining factor of whether a customer is a VIP by polling data from the Inventory Microservice.
 
 Service Appointment Model
-- owner_name: the name of the vehicle's owner
-- date: the date of the appointment
-- time: the time of the appointment
-- reason: why is the car getting serviced(oil change, tire change, battery replacement)
-- vip: if the car was purchased from our dealership then a vip status icon is displayed
-- status: whether the car's service is done or the appointment was canceled
-- technician: the technician who will be working on the vehicle
+- owner_name:(string) the name of the vehicle's owner
+- date:(datefield) the date of the appointment
+- time: (timefield), the time of the appointment
+- reason: (string) why is the car getting serviced(oil change, tire change, battery replacement)
+- vin: (string) the Vehicle Identification Number of the car being serviced
+- vip: (boolean) if the car was purchased from our dealership then a vip status icon is displayed
+- status: (boolean) whether the car's service is done or the appointment was canceled
+- technician: (foreign key:string), the technician who will be working on the vehicle
 
 
 Finally the VinVO model is a Value Object model that holds that data that is being polled from the Inventory microservice's automobile model. The service poll application gathers the vins of the automobiles we had in our inventory to compare whether the vin of customers scheduling a service appointment matches. If the vin field of a service appointment has been within the inventory of cars in the past this signifies that the customer purchased the vehicle from the dealership. Customers who purchase and service their car at the same dealership are labeled as VIPS and are given preferential treatment.
 
 VinVO Model
-- import_href: the automobile's href
-- vin: the VINs of automobiles that were in our inventory in the past
+- import_href: (string) the automobile's href
+- vin: (string) the VINs of automobiles that were in our inventory in the past
 
 The value objects in this microservice would be the VIN, date and time. The three of these objects do not have an id necessarily attached to them and when created are not changed in the lifetime(immutable). A vehicle's VIN can not be changed once a VIN is assigned to the vehicle. In this project the date and times for appointments are unchangeable, an appointment can only be canceled or finished. If the date and time of an appointment could be altered without deleting the original appointment then the date and time fields for service appointment would not be value objects. We use the vin as a value object as we do not base the vin on its identity but rather the state of the VIN, if the state of the VIN matches the state of the vin being inputted to the appointment form,then a customer is set to a VIP status.
 
 The Service Microservice is located on port 8080, its api being accessible by your browser on localhost:8080
-
 
 ## Service API
 
@@ -107,10 +107,10 @@ From Insomnia and your browser, you can access the service appointment endpoints
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | List appointments                  | GET           | http://localhost:8080/api/appointments/                           |
-| Get appointments by VIN            | GET           | http://localhost:8080/api/appointments/records/:vin_vo_id         |
+| Get appointments by VIN            | GET           | http://localhost:8080/api/appointments/records/str:vin_vo_id      |
 | Create appointment                 | POST          | http://localhost:8080/api/appointments/                           |
-| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/:id                        |
-| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/:id                        |
+| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/int:id                        |
+| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/int:id                        |
 
 Creating an appointment requires the vehicle owner name, date of the appointment, time of the appointment, reason for the appointment, the technician who will be service the vehicle, and a VIN(17 letters).
 ```
