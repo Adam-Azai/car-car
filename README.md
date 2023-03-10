@@ -403,8 +403,9 @@ The list of manufacturers is a dictionary with the key "manufacturers" set to a 
 ```
 </details>
 
+<details>
+<summary><h3>VehicleModels</h3></summary>
 
-### VehicleModels
 From Insomnia and your browser, you can access the vehicle model endpoints at the following URLs.
 
 | Action                             |   Method      |                   URL                     	      |
@@ -464,7 +465,11 @@ Getting a list of vehicle models returns a list of the detail information with t
   ]
 }
 ```
-### Automobile
+</details>
+
+<details>
+<summary><h3>Automobile</h3></summary>
+
 From Insomnia and your browser, you can access the automobile endpoints at the following URLs.
 | Action                             |   Method      |                   URL                     	   |
 |:----------------------------------:|:-------------:|:-----------------------------------------------:|
@@ -542,3 +547,4 @@ Getting a list of automobiles returns a dictionary with the key "autos" set to a
   ]
 }
 ```
+</details>
