@@ -54,7 +54,7 @@ https://i.imgur.com/UdfOD0g.png
 
 
 
-![A diagram entailing the Architecture Design of our Project](https://i.imgur.com/UdfOD0g.png)
+![A diagram entailing the Architecture Design of our Project](https://i.imgur.com/peHxtbe.png)
 
 
 ## Service microservice
