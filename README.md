@@ -89,8 +89,10 @@ VinVO Model
 - import_href: the automobile's href
 - vin: the VINs of automobiles that were in our inventory in the past
 
+The value objects in this microservice would be the VIN, date and time. The three of these objects do not have an id necessarily attached to them and when created are not changed in the lifetime(immutable). A vehicle's VIN can not be changed once a VIN is assigned to the vehicle. In this project the date and times for appointments are unchangeable, an appointment can only be canceled or finished. If the date and time of an appointment could be altered without deleting the original appointment then the date and time fields for service appointment would not be value objects. We use the vin as a value object as we do not base the vin on its identity but rather the state of the VIN, if the state of the VIN matches the state of the vin being inputted to the appointment form,then a customer is set to a VIP status.
 
 The Service Microservice is located on port 8080, its api being accessible by your browser on localhost:8080
+
 
 ## Service API
 
@@ -141,7 +143,7 @@ The return value of creating an appointment, updating an appointment, and gettin
 ```
 The list of appointments is a dictionary with the key of "appointments" set to a list of appointments
 ```
-{
+
 	"appointments": [
 		{
 			"id": 1,
@@ -174,7 +176,7 @@ The list of appointments is a dictionary with the key of "appointments" set to a
 			"status": false
 		},
     ]
-}
+
 ```
 Return value of deleting an appointment by its id is a simple delete message on whether the appointment was successfully deleted
 ```
