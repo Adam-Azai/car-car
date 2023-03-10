@@ -271,7 +271,8 @@ The purpose of the sales record is to tie in all the previously mentioned models
 
 
 
-### To access the entire inventory regardless of availability status, it can be done with the GET request in the Automobile API:
+# To access the entire inventory regardless of availability status, it can be done with the GET request in the Automobile API:
+
 <details>
 <summary><h3>Automobile API</h3></summary>
 
@@ -282,8 +283,8 @@ The purpose of the sales record is to tie in all the previously mentioned models
 Upon the GET request you will receive a preview of the return requested as follows:
 ```
 {
-	"autos": [
-		{
+ "autos": [
+  {
 			"href": "/api/automobiles/W13WILLWINITALLLL/",
 			"id": 1,
 			"color": "Black",
