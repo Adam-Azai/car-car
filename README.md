@@ -100,7 +100,10 @@ The service microservice has fully-accessible Service API that holds the technic
 
 The tables below will describe how to access the endpoints as well as the URLS for them as well.
 
-### Service Appointment API
+
+<details>
+<summary>Service Appointment API></summary>
+<details>
 
 From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
 
@@ -187,8 +190,12 @@ Return value of deleting an appointment by its id is a simple delete message on 
     "deleted':true
 }
 ```
+</details>
 
-### Technician API
+
+
+<details>
+<summary>Technician API></summary>
 
 From Insomnia and your browser, you can access the service appointment endpoints at the following urls.
 
@@ -229,7 +236,7 @@ Getting the list of technicians returns a dictionary with the key of "technician
 	]
 }
 ```
-
+</details>
 
 
 ## Sales microservice
@@ -266,7 +273,7 @@ The purpose of the sales record is to tie in all the previously mentioned models
 
 To access the entire inventory regardless of availability status:
 <details>
-<summary><h3>Automobile<h3><summary>
+<summary><h3>Automobile API<h3><summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
@@ -275,7 +282,7 @@ To access the entire inventory regardless of availability status:
 </details>
 
 <details>
-<summary><h3>Customer<h3><summary>
+<summary><h3>Customer API<h3><summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
@@ -293,7 +300,7 @@ An example of the json body for the create customer POST request:
 </details>
 
 <details>
-<summary><h3>Sales Record<h3><summary>
+<summary><h3>Sales Record API<h3><summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
@@ -314,7 +321,7 @@ An example of the json body for the sale record POST request:
 </details>
 
 <details>
-<summary><h3>Saleperson</h3></summary>
+<summary><h3>Saleperson API</h3></summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
@@ -329,6 +336,7 @@ An example of the json body for the Create a Salesperson POST request:
 }
 ```
 </details>
+
 ## Inventory microservice
 
 The purpose of the Inventory microservice is to handle the storage and information of vehicles that the dealership contains, essentially an inventory of the dealership. There are six features within the Inventory microservice. The first feature is creating a manufacturer, an employee can input the manufacturers that the dealership may have/had in their inventory and with the second feature, display the manufacturers in a simple table. The other four features follow the same principle, with the pairs being a create form and viewing table of the inputted data of the form. An employee can input a model type of a vehicle(prius, camry, civic), an image of that vehicle along with a manufacturer, one that was added to the manufacturers database, that is displayed with a simple table. The last two features are a form that an employee can add an individual car to the dealership inventory by inputting the car's vin, year, color and the model type that the dealership offers.
@@ -369,7 +377,8 @@ The tables below will describe how to access the endpoints as well as the URLS f
 
 
 <details>
-<summary><h3>Manufacturers</h3></summary>
+<summary><h3>Manufacturers API</h3></summary>
+
 From Insomnia and your browser, you can access the manufacturer endpoints at the following URLs.
 
 | Action                             |   Method      |                   URL                      	|
@@ -411,7 +420,7 @@ The list of manufacturers is a dictionary with the key "manufacturers" set to a 
 </details>
 
 <details>
-<summary><h3>VehicleModels</h3></summary>
+<summary><h3>VehicleModels API</h3></summary>
 
 From Insomnia and your browser, you can access the vehicle model endpoints at the following URLs.
 
@@ -475,7 +484,7 @@ Getting a list of vehicle models returns a list of the detail information with t
 </details>
 
 <details>
-<summary><h3>Automobile</h3></summary>
+<summary><h3>Automobile API</h3></summary>
 
 From Insomnia and your browser, you can access the automobile endpoints at the following URLs.
 | Action                             |   Method      |                   URL                     	   |
