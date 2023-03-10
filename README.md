@@ -279,6 +279,31 @@ To access the entire inventory regardless of availability status:
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
 
+Upon the GET request you will receive a preview of the return requested as follows:
+```
+{
+	"autos": [
+		{
+			"href": "/api/automobiles/W13WILLWINITALLLL/",
+			"id": 1,
+			"color": "Black",
+			"year": 2023,
+			"vin": "W13WILLWINITALLLL",
+			"model": {
+				"href": "/api/models/1/",
+				"id": 1,
+				"name": "W13",
+				"picture_url": "https://e1.365dm.com/23/03/2048x1152/skysports-lewis-hamilton-formula-1_6078026.jpg",
+				"manufacturer": {
+					"href": "/api/manufacturers/1/",
+					"id": 1,
+					"name": "Mercedes"
+				}
+			}
+		}
+  ]
+}
+```
 
 </details>
 
@@ -291,8 +316,23 @@ To access the entire inventory regardless of availability status:
 | Customer List                      | GET           | http://localhost:8090/api/customers/                              |
 | Create Potential Customer          | POST          | http://localhost:8090/api/customers/                              |
 
+
+Upon the GET request you will receive a preview of the return requested as follows:
 ```
+{
+	"customers": [
+		{
+			"name": "Lewis Hamilton",
+			"address": "123 Lewis St",
+			"phone": "1213123545312342",
+			"id": 1
+		}
+  ]
+}
+```
+
 An example of the json body for the create customer POST request:
+```
 {
 	"name": "Dohv",
 	"address": "13 Skyrim Ln",
@@ -313,6 +353,34 @@ An example of the json body for the create customer POST request:
 | Get Specific Salesperson's Records | GET           | http://localhost:8090/api/salesrecords/:id/                       |
 | Delete a specific Sales Record     | Delete        | http://localhost:8090/api/salesrecords/:id/                       |
 
+Upon the GET request on the Sales Record List you will receive a preview of the return requested as follows:
+```
+{
+	"salesrecords": [
+		{
+			"customer": {
+				"name": "Lewis Hamilton",
+				"address": "123 Lewis St",
+				"phone": "1213123545312342",
+				"id": 1
+			},
+			"automobile": {
+				"vin": "W13WILLWINITALLLL",
+				"id": 1,
+				"availability": false
+			},
+			"salesperson": {
+				"name": "Toto Wolff ",
+				"employee_number": 43123,
+				"id": 1
+			},
+			"sales_price": 15000000,
+			"id": 1
+		}
+  ]
+}
+```
+
 An example of the json body for the sale record POST request:
 ```
     {
@@ -321,6 +389,38 @@ An example of the json body for the sale record POST request:
 	"customer": "Joshua",
 	"sales_price": "$1000"
     }
+```
+Upon the GET request on the Specific Salesperson's Records you will receive a preview of the return requested as follows:
+```
+[
+	{
+		"customer": {
+			"name": "Lewis Hamilton",
+			"address": "123 Lewis St",
+			"phone": "1213123545312342",
+			"id": 1
+		},
+		"automobile": {
+			"vin": "W13WILLWINITALLLL",
+			"id": 1,
+			"availability": false
+		},
+		"salesperson": {
+			"name": "Toto Wolff ",
+			"employee_number": 43123,
+			"id": 1
+		},
+		"sales_price": 15000000,
+		"id": 1
+	}
+]
+```
+
+You can also DELETE a particular sales record based on the id of the sale and receive confirmation:
+```
+{
+	"deleted": false
+}
 ```
 </details>
 
@@ -331,6 +431,24 @@ An example of the json body for the sale record POST request:
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
 | Create a Salesperson               | POST          | http://localhost:8090/api/salespeople/                            |
+
+Upon the GET request on the Sales Record List you will receive a preview of the return requested as follows:
+```
+{
+	"salespeople": [
+		{
+			"name": "Toto Wolff ",
+			"employee_number": 43123,
+			"id": 1
+		},
+		{
+			"name": "Christian Horner ",
+			"employee_number": 6666,
+			"id": 2
+		}
+	]
+}
+```
 
 An example of the json body for the Create a Salesperson POST request:
 ```
