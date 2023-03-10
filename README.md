@@ -231,7 +231,6 @@ Getting the list of technicians returns a dictionary with the key of "technician
 ```
 
 
-## Sales microservice
 
 ## Sales microservice
 
@@ -273,7 +272,7 @@ To access the entire inventory regardless of availability status:
 
 
 
-##Customer API
+## Customer API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Customer List                      | GET           | http://localhost:8090/api/customers/                              |
@@ -289,7 +288,7 @@ An example of the json body for the create customer POST request:
 ```
 
 
-##Sales Record API
+## Sales Record API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Sales Record List                  | GET           | http://localhost:8090/api/salesrecords/                           |
@@ -309,7 +308,7 @@ An example of the json body for the sale record POST request:
 
 
 
-##Saleperson API
+## Saleperson API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
