@@ -237,3 +237,31 @@ microservice, here.
 
 
 ## Inventory microservice
+
+The purpose of the Inventory microservice is to handle the storage and information of vehicles that the dealership contains, essentially an inventory of the dealership. There are six features within the Inventory microservice. The first feature is creating a manufacturer, an employee can input the manufacturers that the dealership may have/had in their inventory and with the second feature, display the manufacturers in a simple table. The other four features follow the same principle, with the pairs being a create form and viewing table of the inputted data of the form. An employee can input a model type of a vehicle(prius, camry, civic), an image of that vehicle along with a manufacturer, one that was added to the manufacturers database, that is displayed with a simple table. The last two features are a form that an employee can add an individual car to the dealership inventory by inputting the car's vin, year, color and the model type that the dealership offers.
+
+There are three models for the Inventory microservice. The three models are a Manufacturer model, VehicleModel, and a Automobile model.
+
+The Manufacturer model is simply one character field for the name of the manufacturer, the vehicle model pulls the name of the manufacturer with a foreign key field. One manufacturer can have multiple models and vehicles but a vehicle nor vehicle model can not have multiple manufacturers. Have you heard of a Toyota x Rolls Royce vehicle before? If so, please let us know.
+
+Manufacturer
+- name: (string) name of a manufacturer
+
+
+The VehicleModel model can be quite confusing given the attached model to the word vehicle. VehicleModel refers to a Vehicles model, a prius for example or a corolla. The VehicleModel model contains three fields. A character field for the name of the model, an url field for an image of that type of model, and a foreign key field as this model pulls a manufacturer name from the manufacturer model as every car model has a manufacturer that made the vehicle.
+
+VehicleModel
+- name:(string) name of the vehicle model, not to be confused with the name field for manufacturer above
+- picture_url: (url) image of the model type
+- manufacturer: (foreign key, string) name of the manufacturer
+
+
+The last model is a the Automobile model. This model is for the addition of a single vehicle to the dealership's inventory of cars. These four fields contain the information that are usually the key items people look for in a car when browsing at a dealership. A character field for the color of the car, a positive integer field for the year of the car, a character field for the VIN, and finally a foreign key field for the car's model type. The VIN is the most important field for the entire project as the Service Microservice and Sales Microservice both poll the Inventory microservice for the VIN field. It is the integration point for microservices to communicate with one another.
+
+Automobile Model
+- color:(string) the color of the vehicle
+- year:(positive integer) the year of the car
+- vin:(string) VIN
+- model:(string) the name of the model type this car is
+
+The value objects in this microservice would be the vin, year of the car, and the manufacturer of the vehicle. Each of these objects are immutable and are utilized by their state, not their identity. A vehicle's VIN can not be changed once assigned, another car manufacturer can't take the car away and remake it under their brand and the year of a car will be always be stagnant. The vin is polled both by Service and Sales to determine whether a customer is a vip, and to determine whether the car is available for sale as availability of a vehicle is tied to the VIN of the vehicle.
