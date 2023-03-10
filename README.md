@@ -271,7 +271,7 @@ The purpose of the sales record is to tie in all the previously mentioned models
 
 
 
-# To access the entire inventory regardless of availability status, it can be done with the GET request in the Automobile API:
+To access the entire inventory regardless of availability status, it can be done with the GET request in the Automobile API:
 
 <details>
 <summary><h3>Automobile API</h3></summary>
