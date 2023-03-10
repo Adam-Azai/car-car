@@ -54,7 +54,7 @@ https://i.imgur.com/UdfOD0g.png
 
 
 
-![A diagram entailing the Architecture Design of our Project](https://i.imgur.com/peHxtbe.png)
+![A diagram entailing the Architecture Design of our Project](https://i.imgur.com/eju7Qbc.png)
 
 
 ## Service microservice
@@ -96,7 +96,7 @@ The Service Microservice is located on port 8080, its api being accessible by yo
 
 ## Service API
 
-The service microservice has fully-accessible API that holds the technicians, and service appointments. It has functional RESTful endpoints for the Technician and Service Appointment models.
+The service microservice has fully-accessible Service API that holds the technicians, and service appointments. It has functional RESTful endpoints for the Technician and Service Appointment models.
 
 The tables below will describe how to access the endpoints as well as the URLS for them as well.
 
@@ -111,6 +111,9 @@ From Insomnia and your browser, you can access the service appointment endpoints
 | Create appointment                 | POST          | http://localhost:8080/api/appointments/                           |
 | Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/int:id                        |
 | Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/int:id                        |
+
+The str:vin_vo_id refers to simply inputting the vin itself at the end of the url.
+int:id being the id of the appointment, whose value is an integer
 
 Creating an appointment requires the vehicle owner name, date of the appointment, time of the appointment, reason for the appointment, the technician who will be service the vehicle, and a VIN(17 letters).
 ```
@@ -264,4 +267,190 @@ Automobile Model
 - vin:(string) VIN
 - model:(string) the name of the model type this car is
 
-The value objects in this microservice would be the vin, year of the car, and the manufacturer of the vehicle. Each of these objects are immutable and are utilized by their state, not their identity. A vehicle's VIN can not be changed once assigned, another car manufacturer can't take the car away and remake it under their brand and the year of a car will be always be stagnant. The vin is polled both by Service and Sales to determine whether a customer is a vip, and to determine whether the car is available for sale as availability of a vehicle is tied to the VIN of the vehicle.
+The value objects in this microservice would be the vin,  and the manufacturer of the vehicle. Each of these objects are immutable and are utilized by their state, not their identity. A vehicle's VIN can not be changed once assigned, another car manufacturer can't take the car away and remake it under their brand. The vin is polled both by Service and Sales to determine whether a customer is a vip, and to determine whether the car is available for sale as availability of a vehicle is tied to the VIN of the vehicle.
+
+## Inventory API
+
+The Inventory has fully-accessible Inventory API that can keep track of the automobile inventory for the automobile dealership. The api is located at port 8100. If you wish to access it from your browser simply navigate to localhost:8100
+
+The tables below will describe how to access the endpoints as well as the URLS for them as well.
+
+### Manufacturers
+From Insomnia and your browser, you can access the manufacturer endpoints at the following URLs.
+
+
+
+| Action                             |   Method      |                   URL                     	|
+|:----------------------------------:|:-------------:|:--------------------------------------------:|
+| List manufacturers                 | GET           | http://localhost:8100/api/manufacturers/     |
+| Create a manufacturer              | POST          | http://localhost:8100/api/manufacturers/     |
+| Get a specific manufacturer		 | GET			 | http://localhost:8100/api/manufacturers/:id/ |
+| Update a specific manufacturer	 | PUT	         | http://localhost:8100/api/manufacturers/:id/ |
+| Delete a specific manufacturer	 | DELETE	     | http://localhost:8100/api/manufacturers/:id/ |
+
+int:id being the id of the manufacturer, whose value is an integer.
+
+Creating and updating a manufacturer requires only the manufacturer's name.
+```
+{
+  "name": "Chrysler"
+}
+```
+The return value of creating, getting, and updating a single manufacturer is its name, href, and id.
+```
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Chrysler"
+}
+```
+The list of manufacturers is a dictionary with the key "manufacturers" set to a list of manufacturers.
+```
+{
+  "manufacturers": [
+    {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  ]
+}
+```
+### VehicleModels
+From Insomnia and your browser, you can access the vehicle model endpoints at the following URLs.
+
+| Action                             |   Method      |                   URL                     	   |
+|:----------------------------------:|:-------------:|:-----------------------------------------------:|
+| List vehicle models                | GET           | http://localhost:8100/api/models/     		   |
+| Create a vehicle model             | POST          | http://localhost:8100/api/models/     		   |
+| Get a specific vehicle model		 | GET			 | http://localhost:8100/api/models/int:id/ 	   |
+| Update a specific vehicle model	 | PUT	         | http://localhost:8100/api/manufacturers/int:id/ |
+| Delete a specific vehicle model	 | DELETE	     | http://localhost:8100/api/manufacturers/int:id/ |
+
+int:id being the id of the vehicle, whose value is an integer
+
+Creating and updating a vehicle model requires the model name, a URL of an image, and the id of the manufacturer.
+```
+{
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer_id": 1
+}
+```
+Updating a vehicle model can take the name and/or the picture URL.
+```
+{
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
+}
+```
+Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
+```
+{
+  "href": "/api/models/1/",
+  "id": 1,
+  "name": "Sebring",
+  "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+  "manufacturer": {
+    "href": "/api/manufacturers/1/",
+    "id": 1,
+    "name": "Daimler-Chrysler"
+  }
+}
+```
+Getting a list of vehicle models returns a list of the detail information with the key "models".
+```
+{
+  "models": [
+    {
+      "href": "/api/models/1/",
+      "id": 1,
+      "name": "Sebring",
+      "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+      "manufacturer": {
+        "href": "/api/manufacturers/1/",
+        "id": 1,
+        "name": "Daimler-Chrysler"
+      }
+    }
+  ]
+}
+```
+### Automobile
+From Insomnia and your browser, you can access the automobile endpoints at the following URLs.
+| Action                             |   Method      |                   URL                     	   |
+|:----------------------------------:|:-------------:|:-----------------------------------------------:|
+| List automobiles                   | GET           | http://localhost:8100/api/automobiles/     	   |
+| Create an automobile               | POST          | http://localhost:8100/api/automobiles/     	   |
+| Get a specific automobile			 | GET			 | http://localhost:8100/api/automobiles/:vin/ 	   |
+| Update a specific automobile   	 | PUT	         | http://localhost:8100/api/automobiles/:vin/     |
+| Delete a specific automobile  	 | DELETE	     | http://localhost:8100/api/autopmobiles/:vin/    |
+
+:vin being the vin of the vehicle at the end of the url, just like str:vin_vo_id
+
+You can create an automobile with its color, year, VIN, and the id of the vehicle model.
+```
+{
+  "color": "red",
+  "year": 2012,
+  "vin": "1C3CC5FB2AN120174",
+  "model_id": 1
+}
+```
+As noted, you query an automobile by its VIN. For example, you would use the URL
+
+http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
+
+to get the details for the car with the VIN "1C3CC5FB2AN120174". The details for an automobile include its model and manufacturer.
+```
+{
+  "href": "/api/automobiles/1C3CC5FB2AN120174/",
+  "id": 1,
+  "color": "yellow",
+  "year": 2013,
+  "vin": "1C3CC5FB2AN120174",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Sebring",
+    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Daimler-Chrysler"
+    }
+  }
+}
+```
+You can update the color and/or year of an automobile.
+```
+{
+  "color": "red",
+  "year": 2012
+}
+```
+Getting a list of automobiles returns a dictionary with the key "autos" set to a list of automobile information.
+```
+{
+  "autos": [
+    {
+      "href": "/api/automobiles/1C3CC5FB2AN120174/",
+      "id": 1,
+      "color": "yellow",
+      "year": 2013,
+      "vin": "1C3CC5FB2AN120174",
+      "model": {
+        "href": "/api/models/1/",
+        "id": 1,
+        "name": "Sebring",
+        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+        "manufacturer": {
+          "href": "/api/manufacturers/1/",
+          "id": 1,
+          "name": "Daimler-Chrysler"
+        }
+      }
+    }
+  ]
+}
+```
