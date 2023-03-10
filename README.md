@@ -363,13 +363,13 @@ From Insomnia and your browser, you can access the manufacturer endpoints at the
 
 
 
-| Action                             |   Method      |                   URL                     	|
+| Action                             |   Method      |                   URL                      	|
 |:----------------------------------:|:-------------:|:--------------------------------------------:|
 | List manufacturers                 | GET           | http://localhost:8100/api/manufacturers/     |
 | Create a manufacturer              | POST          | http://localhost:8100/api/manufacturers/     |
-| Get a specific manufacturer		 | GET			 | http://localhost:8100/api/manufacturers/:id/ |
-| Update a specific manufacturer	 | PUT	         | http://localhost:8100/api/manufacturers/:id/ |
-| Delete a specific manufacturer	 | DELETE	     | http://localhost:8100/api/manufacturers/:id/ |
+| Get a specific manufacturer		     | GET			     | http://localhost:8100/api/manufacturers/:id/ |
+| Update a specific manufacturer	   | PUT	         | http://localhost:8100/api/manufacturers/:id/ |
+| Delete a specific manufacturer	   | DELETE	       | http://localhost:8100/api/manufacturers/:id/ |
 
 int:id being the id of the manufacturer, whose value is an integer.
 
@@ -402,13 +402,13 @@ The list of manufacturers is a dictionary with the key "manufacturers" set to a 
 ### VehicleModels
 From Insomnia and your browser, you can access the vehicle model endpoints at the following URLs.
 
-| Action                             |   Method      |                   URL                     	   |
-|:----------------------------------:|:-------------:|:-----------------------------------------------:|
-| List vehicle models                | GET           | http://localhost:8100/api/models/     		   |
-| Create a vehicle model             | POST          | http://localhost:8100/api/models/     		   |
-| Get a specific vehicle model		 | GET			 | http://localhost:8100/api/models/int:id/ 	   |
-| Update a specific vehicle model	 | PUT	         | http://localhost:8100/api/manufacturers/int:id/ |
-| Delete a specific vehicle model	 | DELETE	     | http://localhost:8100/api/manufacturers/int:id/ |
+| Action                             |   Method      |                   URL                     	      |
+|:----------------------------------:|:-------------:|:------------------------------------------------:|
+| List vehicle models                | GET           | http://localhost:8100/api/models/     		        |
+| Create a vehicle model             | POST          | http://localhost:8100/api/models/     		        |
+| Get a specific vehicle model		   | GET			     | http://localhost:8100/api/models/int:id/ 	      |
+| Update a specific vehicle model	   | PUT	         | http://localhost:8100/api/manufacturers/int:id/  |
+| Delete a specific vehicle model	   | DELETE	       | http://localhost:8100/api/manufacturers/int:id/  |
 
 int:id being the id of the vehicle, whose value is an integer
 
@@ -465,9 +465,9 @@ From Insomnia and your browser, you can access the automobile endpoints at the f
 |:----------------------------------:|:-------------:|:-----------------------------------------------:|
 | List automobiles                   | GET           | http://localhost:8100/api/automobiles/     	   |
 | Create an automobile               | POST          | http://localhost:8100/api/automobiles/     	   |
-| Get a specific automobile			 | GET			 | http://localhost:8100/api/automobiles/:vin/ 	   |
-| Update a specific automobile   	 | PUT	         | http://localhost:8100/api/automobiles/:vin/     |
-| Delete a specific automobile  	 | DELETE	     | http://localhost:8100/api/autopmobiles/:vin/    |
+| Get a specific automobile			     | GET			     | http://localhost:8100/api/automobiles/:vin/ 	   |
+| Update a specific automobile   	   | PUT	         | http://localhost:8100/api/automobiles/:vin/     |
+| Delete a specific automobile  	   | DELETE	       | http://localhost:8100/api/autopmobiles/:vin/    |
 
 :vin being the vin of the vehicle at the end of the url, just like str:vin_vo_id
 
