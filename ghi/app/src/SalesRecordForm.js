@@ -8,6 +8,54 @@ function SalesRecordForm(){
   const [automobiles, setAutomobiles] = useState([]);
   const [seller, setSeller] = useState([]);
   const [buyer, setBuyer] = useState([]);
+
+  const handleAutomobileChange = (event) => {
+    const value = event.target.value
+    setAutomobile(value)
+  }
+
+  const handleSalespersonChange = (event) => {
+    const value = event.target.value
+    setSalesperson(value)
+  }
+
+  const handleCustomerChange = (event) => {
+    const value = event.target.value
+    setCustomer(value)
+  }
+
+  const handleSalesPriceChange = (event) => {
+    const value = event.target.value
+    setSalesPrice(value)
+  }
+
+
+const fetchModelData = async () => {
+  const automobileUrl = 'http://localhost:8090/api/automobilelist/'
+  const automobileResponse = await fetch(automobileUrl);
+    if (automobileResponse.ok) {
+      const automobileData = await automobileResponse.json();
+      setAutomobiles(automobileData.automobiles)
+    }
+    const sellerUrl= 'http://localhost:8090/api/salespeople/'
+    const sellerResponse = await fetch(sellerUrl);
+      if (sellerResponse.ok) {
+        const sellerData = await sellerResponse.json();
+        setSeller(sellerData.salespeople)
+      }
+      const buyerUrl= 'http://localhost:8090/api/customers/'
+      const buyerResponse = await fetch(buyerUrl);
+        if (buyerResponse.ok) {
+          const buyerData = await buyerResponse.json();
+          setBuyer(buyerData.customers)
+        }
+}
+
+  useEffect( () => {
+    fetchModelData()
+  }, [])
+
+
   const handleSubmit = async(event) => {
     event.preventDefault();
 
@@ -30,51 +78,13 @@ function SalesRecordForm(){
       setSalesperson('');
       setCustomer('');
       setSalesPrice('');
+      fetchModelData()
     }
   }
-  const handleAutomobileChange = (event) => {
-    const value = event.target.value
-    setAutomobile(value)
-  }
 
-  const handleSalespersonChange = (event) => {
-    const value = event.target.value
-    setSalesperson(value)
-  }
 
-  const handleCustomerChange = (event) => {
-    const value = event.target.value
-    setCustomer(value)
-  }
 
-  const handleSalesPriceChange = (event) => {
-    const value = event.target.value
-    setSalesPrice(value)
-  }
 
-  const fetchModelData = async () => {
-    const automobileUrl = 'http://localhost:8090/api/automobilelist/'
-    const automobileResponse = await fetch(automobileUrl);
-      if (automobileResponse.ok) {
-        const automobileData = await automobileResponse.json();
-        setAutomobiles(automobileData.automobiles)
-      }
-      const sellerUrl= 'http://localhost:8090/api/salespeople/'
-      const sellerResponse = await fetch(sellerUrl);
-        if (sellerResponse.ok) {
-          const sellerData = await sellerResponse.json();
-          setSeller(sellerData.salespeople)
-        }
-        const buyerUrl= 'http://localhost:8090/api/customers/'
-        const buyerResponse = await fetch(buyerUrl);
-          if (buyerResponse.ok) {
-            const buyerData = await buyerResponse.json();
-            setBuyer(buyerData.customers)
-          }
-  }
-  useEffect( () => {
-    fetchModelData()
-  }, [])
   return (
     <div className="row">
       <div className="offset-3 col-6">
