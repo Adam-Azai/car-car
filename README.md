@@ -44,7 +44,7 @@ To start CarCar in your browser please follow the instructions listed below.
 10. Verify that the containers were created within Docker Desktop and none of the containers have stopped running. In total there   should be 7 containers.
 11. When the app's server is up and running the terminal window will display a message stating that the server was complied
 12. Open your browser and input the url (localhost:3000)
-13. The main page of CarCar will be on display when navigating to localhost:3000
+13. The main page of CarCar will be on display when navigating to localhost:3000 in your browser
 14. Feel free to play around the site and please send any feedback you have regarding the project.
 
 ## Design
@@ -358,10 +358,12 @@ The Inventory has fully-accessible Inventory API that can keep track of the auto
 
 The tables below will describe how to access the endpoints as well as the URLS for them as well.
 
-### Manufacturers
+
+
+
+<details>
+<summary><h3>Manufacturers</h3></summary>
 From Insomnia and your browser, you can access the manufacturer endpoints at the following URLs.
-
-
 
 | Action                             |   Method      |                   URL                      	|
 |:----------------------------------:|:-------------:|:--------------------------------------------:|
@@ -399,6 +401,9 @@ The list of manufacturers is a dictionary with the key "manufacturers" set to a 
   ]
 }
 ```
+</details>
+
+
 ### VehicleModels
 From Insomnia and your browser, you can access the vehicle model endpoints at the following URLs.
 
