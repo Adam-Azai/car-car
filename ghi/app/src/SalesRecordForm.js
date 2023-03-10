@@ -12,13 +12,10 @@ function SalesRecordForm(){
     event.preventDefault();
 
     const data = {}
-
     data.automobile = automobile
     data.salesperson = salesperson
     data.customer = customer
     data.sales_price = sales_price
-
-
     const salesRecordUrl ='http://localhost:8090/api/salesrecords/'
     const fetchConfig = {
       method: 'post',

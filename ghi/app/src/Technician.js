@@ -22,9 +22,6 @@ function Technician() {
             const newTechnician = await technicianResponse.json()
             setTechnicianName("");
             setID("");
-            alert(`${technicianName} has been added to our Employee Directory`)
-        } else{
-
         }
     }
     const handleTechnicianChange= (event) => {

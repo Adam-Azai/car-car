@@ -59,7 +59,7 @@ https://i.imgur.com/UdfOD0g.png
 
 ## Service microservice
 
-The purpose of the Service microservice is to handle the dealership's vehicle maintenance department. There are four features of the maintenance department that the Service microservice handles. The first feature is that an employee can register a new car technician that will be available for service apPointments. The second feature is that any car owner can schedule a service appointment for their vehicle, one does not have to purchase a vehicle from the dealership to receive service. The third feature is a table to view upcoming scheduled service appointments with the capability of removing them from the table when a customer cancels the appointment or when the service has been completed. The table also informs technicians/concierge on which customers are VIPS, customers who bought the car from the dealership, in order to show preferential treatment to the VIP customers. The final feature is a search function for employees to pull the service history of a vehicle based on the vehicle's VIN.
+The purpose of the Service microservice is to handle the dealership's vehicle maintenance department. There are four features of the maintenance department that the Service microservice handles. The first feature is that an employee can register a new car technician that will be available for service appointments. The second feature is that any car owner can schedule a service appointment for their vehicle, one does not have to purchase a vehicle from the dealership to receive service. The third feature is a table to view upcoming scheduled service appointments with the capability of removing them from the table when a customer cancels the appointment or when the service has been completed. The table also informs technicians/concierge on which customers are VIPS, customers who bought the car from the dealership, in order to show preferential treatment to the VIP customers. The final feature is a search function for employees to pull the service history of a vehicle based on the vehicle's VIN.
 
 
 There are three models for the Service microservice. The three models being a Technician models, a Service Appointment model and finally a VinVO models.
@@ -232,9 +232,6 @@ Getting the list of technicians returns a dictionary with the key of "technician
 
 Explain your models and integration with the inventory
 microservice, here.
-
-
-
 
 
 
