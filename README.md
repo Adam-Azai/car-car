@@ -233,32 +233,95 @@ Getting the list of technicians returns a dictionary with the key of "technician
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+## Sales microservice
+
+For the sales microservice, the main goal is to aid in inventory management and sales record organization. One of the features allows you to create a potential customer that is tied to their phone number, name and address; the customer can then be selected for a sale. It will also allow you to create a salesperson; the salesperson’s information are stored with name and employee number.  With consideration to an automobile being added by the inventory microservice, if a specific automobile has yet to have been sold, the automobile will populate on the drop down menu when creating a sales record transaction. In the feature for recording a sal;, you are able to select an [unsold] automobile choose a salesperson, choose a customer, and enter in the sales price. That newly recorded transaction will now be listed in the sales record list, and in that list you will find a table that displays the salesperson, Employee number, the purchaser, associated VIN, and the sales price. If you desire to see the sales record of a particular salesperson, use the “Filter by Salesperson” drop down menu. The sales microservice polls automobile information from the inventory microservice; without an automobile from the inventory microservice, the sales microservice would not have a VIN number to use to record a sale.
+
+The microservice for sales operate off of 4 models:
+The customer model will take in name, address, and phone number of a potential customer.
+	The Customer model:
+		-name: customer’s name
+		-address: customer’s address
+		-phone: customer’s phone number
+
+The salesperson model takes in the name and employee number
+	The Salesperson model:
+		-name: salesperson’s name
+		-employee_number: salesperson’s employee number
+
+The automobileVO is the value object that takes in the specific automobile and creates reference to the automobile by vin number while binding its sold status. Do keep in mind that django / json has the ability to id / serialize data in its objects.
+
+	The AutomobileVO model:
+		-vin: vin number of automobile
+		-availability: the sold status of a particular vehicle
+
+The purpose of the sales record is to tie in all the previously mentioned models to record a sales transaction.
+
+	The SalesRecord model:
+		-customer: purchaser of automobile
+		-automobile: automobile to be purchased
+		-salesperson: seller of automobile
+		-salesprice: agreed selling price of automobile.
 
 
+
+To access the entire inventory regardless of availability status:
+
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
+| Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
+
+
+
+##Customer API
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Customer List                      | GET           | http://localhost:8090/api/customers/                              |
 | Create Potential Customer          | POST          | http://localhost:8090/api/customers/                              |
-| Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
-| Create a Salesperson               | POST          | http://localhost:8090/api/salespeople/                            |
-| Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
+
+```
+An example of the json body for the create customer POST request:
+{
+	"name": "Dohv",
+	"address": "13 Skyrim Ln",
+	"phone": "10010088454"
+}
+```
+
+
+##Sales Record API
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Sales Record List                  | GET           | http://localhost:8090/api/salesrecords/                           |
 | Create a Sales Record              | POST          | http://localhost:8090/api/salesrecords/                           |
 | Get Specific Salesperson's Records | GET           | http://localhost:8090/api/salesrecords/:id/                       |
 | Delete a specific Sales Record     | Delete        | http://localhost:8090/api/salesrecords/:id/                       |
 
-
-An example for the json body for the sale record POST request:
+An example of the json body for the sale record POST request:
+```
     {
 	"salesperson": "Jennifer",
 	"automobile": "567VIN",
 	"customer": "Joshua",
 	"sales_price": "$1000"
     }
+```
 
-An example
+
+
+##Saleperson API
+| Action                             |   Method      |                   URL                                             |
+|:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
+| Salesperson List                   | GET           | http://localhost:8090/api/salespeople/                            |
+| Create a Salesperson               | POST          | http://localhost:8090/api/salespeople/                            |
+
+An example of the json body for the Create a Salesperson POST request:
+```
+{
+	"name": "Haas",
+	"employee_number": "00004"
+}
+```
 
 ## Inventory microservice
 
