@@ -77,7 +77,7 @@ Service Appointment Model
 - owner_name:(string) the name of the vehicle's owner
 - date:(datefield) the date of the appointment
 - time: (timefield), the time of the appointment
-- reason: (string) why is the car getting serviced(oil change, tire change, battery replacement)
+- reason: (textfield) why is the car getting serviced (oil change, tire change, battery replacement)
 - vin: (string) the Vehicle Identification Number of the car being serviced
 - vip: (boolean) if the car was purchased from our dealership then a vip status icon is displayed
 - status: (boolean) whether the car's service is done or the appointment was canceled
@@ -109,8 +109,8 @@ From Insomnia and your browser, you can access the service appointment endpoints
 | List appointments                  | GET           | http://localhost:8080/api/appointments/                           |
 | Get appointments by VIN            | GET           | http://localhost:8080/api/appointments/records/str:vin_vo_id      |
 | Create appointment                 | POST          | http://localhost:8080/api/appointments/                           |
-| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/int:id                        |
-| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/int:id                        |
+| Delete appointment by id           | DELETE        | http://localhost:8080/api/appointments/int:id                     |
+| Cancel/Finish appointment status   | PUT           | http://localhost:8080/api/appointments/int:id                     |
 
 The str:vin_vo_id refers to simply inputting the vin itself at the end of the url.
 int:id being the id of the appointment, whose value is an integer
