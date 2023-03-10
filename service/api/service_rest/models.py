@@ -7,7 +7,7 @@ class VinVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return f'{self.vin}'
+        return f"{self.vin}"
 
 
 class Technician(models.Model):
@@ -16,9 +16,9 @@ class Technician(models.Model):
 
     def __str__(self):
         return self.technician_name
-    def get_api_url(self):
-        return reverse('api_technician', kwargs={'pk': self.id})
 
+    def get_api_url(self):
+        return reverse("api_technician", kwargs={"pk": self.id})
 
 
 class ServiceAppointment(models.Model):
@@ -29,13 +29,12 @@ class ServiceAppointment(models.Model):
     vip = models.BooleanField(default=False)
     status = models.BooleanField(default=False)
     technician = models.ForeignKey(
-        Technician,
-        related_name='appointments',
-        on_delete=models.CASCADE
+        Technician, related_name="appointments", on_delete=models.CASCADE
     )
     vin = models.CharField(max_length=17)
 
     def __str__(self):
-        return f'{self.owner_name}{self.reason}{self.vin}{self.technician}{self.time}'
+        return f"{self.owner_name}{self.reason}{self.vin}{self.technician}{self.time}"
+
     def get_api_url(self):
-        return reverse("api_appointment", kwargs={"pk":self.id})
+        return reverse("api_appointment", kwargs={"pk": self.id})
