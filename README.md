@@ -243,7 +243,7 @@ microservice, here.
 
 The purpose of the Inventory microservice is to handle the storage and information of vehicles that the dealership contains, essentially an inventory of the dealership. There are six features within the Inventory microservice. The first feature is creating a manufacturer, an employee can input the manufacturers that the dealership may have/had in their inventory and with the second feature, display the manufacturers in a simple table. The other four features follow the same principle, with the pairs being a create form and viewing table of the inputted data of the form. An employee can input a model type of a vehicle(prius, camry, civic), an image of that vehicle along with a manufacturer, one that was added to the manufacturers database, that is displayed with a simple table. The last two features are a form that an employee can add an individual car to the dealership inventory by inputting the car's vin, year, color and the model type that the dealership offers.
 
-There are three models for the Inventory microservice. The three models are a Manufacturer model, VehicleModel, and a Automobile model.
+There are three models for the Inventory microservice. The three models are a Manufacturer model, a VehicleModel, and a Automobile model.
 
 The Manufacturer model is simply one character field for the name of the manufacturer, the vehicle model pulls the name of the manufacturer with a foreign key field. One manufacturer can have multiple models and vehicles but a vehicle nor vehicle model can not have multiple manufacturers. Have you heard of a Toyota x Rolls Royce vehicle before? If so, please let us know.
 
