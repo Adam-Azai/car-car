@@ -273,16 +273,18 @@ The purpose of the sales record is to tie in all the previously mentioned models
 
 To access the entire inventory regardless of availability status:
 <details>
-<summary><h3>Automobile API<h3><summary>
+<summary><h3>Automobile API</h3></summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
 | Automobile Inventory List          | GET           | http://localhost:8090/api/automobilelist/                         |
 
+
 </details>
 
+
 <details>
-<summary><h3>Customer API<h3><summary>
+<summary><h3>Customer API</h3></summary>
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
@@ -297,10 +299,12 @@ An example of the json body for the create customer POST request:
 	"phone": "10010088454"
 }
 ```
+
 </details>
 
 <details>
-<summary><h3>Sales Record API<h3><summary>
+<summary><h3>Sales Record API</h3></summary>
+
 
 | Action                             |   Method      |                   URL                                             |
 |:----------------------------------:|:-------------:|:-----------------------------------------------------------------:|
