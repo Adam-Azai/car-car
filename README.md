@@ -2,7 +2,7 @@
 
 Team:
 * Adam Azai - Service Microservice
-* Person 2 - Which microservice?
+* Joshua Evangelista - Sales Microservice
 
 CarCar is a Car Dealership website in which both customers and employees of the site can utilize for inquires of the vehicles in stock, schedule a service appointment, or recording a vehicle sale.
 
