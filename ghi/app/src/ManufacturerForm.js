@@ -30,11 +30,13 @@ function ManufacturerForm() {
 
 
 return (
-  <div className="row">
-    <div className="offset-3 col-6">
-      <div className="shadow p-4 mt-4">
+  <>
+  <div className="row center" id="manufacturer" >
+  <div className="shadow p-5">
+  <img src="https://media.designrush.com/articles/1651/conversions/_1526480503_147_car-preview.jpg"  />
+  <div className="col" id='create-manufacturer'>
       <h2>Create a manufacturer</h2>
-      <form id="create-manufacturer" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <input value={manufacturer} onChange={handleManufacturerChange}  placeholder="name" required type="text" className="form-control" name="name"/>
             <label>Manufacturers</label>
@@ -44,9 +46,8 @@ return (
       </div>
     </div>
   </div>
-
+    </>
 )
-
 }; // end
 
 export default ManufacturerForm;

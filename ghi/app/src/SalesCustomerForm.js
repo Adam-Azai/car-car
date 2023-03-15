@@ -51,16 +51,19 @@ function SalesCustomerForm() {
           <h1>Create a Customer</h1>
           <form onSubmit={handleSubmit}>
 
-            <div className="form-cloating mb-3">
+            <div className="form-floating mb-3">
               <input value={name} onChange={handleNameChange} name="name" placeholder="Customer Name" id="name" required type="text" className="form-control" />
+              <label>Customer Name</label>
             </div>
 
-            <div className="form-cloating mb-3">
+            <div className="form-floating mb-3">
               <input value={address} onChange={handleAddressChange} name="name" placeholder="Customer Address" id="name" required type="text" className="form-control" />
+              <label>Customer Address</label>
             </div>
 
-            <div className="form-cloating mb-3">
+            <div className="form-floating mb-3">
               <input value={phone} onChange={handlePhoneChange} maxLength="16" name="name" placeholder="Customer Phone Number" id="name" required type="text" className="form-control" />
+              <label>Customer's Phone Number</label>
             </div>
           <button className="btn btn-primary">Create</button>
           </form>

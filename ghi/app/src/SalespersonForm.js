@@ -45,12 +45,14 @@ function SalespersonForm() {
           <h1>Create a Salesperson</h1>
           <form onSubmit={handleSubmit}>
 
-            <div className="form-cloating mb-3">
+            <div className="form-floating mb-3">
               <input value={name} onChange={handleNameChange} name="name" placeholder="Salesperson Name" id="name" required type="text" className="form-control" />
+              <label>Sales Person Name</label>
             </div>
 
-            <div className="form-cloating mb-3">
+            <div className="form-floating mb-3">
               <input value={employeeNumber} onChange={handleEmployeeNumberChange}  placeholder="Employee Number: ex.'xxxxx'" id="name" required type="number" min="-99999" max="99999" className="form-control" />
+              <label>Employee Number</label>
             </div>
 
           <button className="btn btn-primary">Create</button>

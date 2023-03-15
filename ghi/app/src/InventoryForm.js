@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import "./index.css"
 function AutomobileForm(){
   const [color, setColor] = useState('');
   const [year, setYear] = useState('');
@@ -64,25 +64,25 @@ function AutomobileForm(){
     fetchModelData()
   }, [])
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
+    <div className="row" id='test' >
+      <div className="offset-3 col-6" id="add-automobile">
         <div className="shadow p-4 mt-4">
           <h2>Add an Automobile to the Inventory</h2>
-          <form onSubmit={handleSubmit} id="add-automobile">
-
+          <form onSubmit={handleSubmit} >
 
             <div className='form-floating mb-3'>
-              <input value={color} onChange={handleColorChange} name="name" placeholder="Color" id="name" required type="text" className="form-control" />
-              <label>Color</label>
+              <label htmlFor=''>Color</label>
+              <input value={color} onChange={handleColorChange} name="color" placeholder="Color" id="color" required type="text" className="form-control" />
+
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={year} onChange={handleYearChange} maxLength="4" name="name" placeholder="Year" id="name" required type="text" className="form-control" />
+              <input value={year} onChange={handleYearChange} maxLength="4" name="year" placeholder="Year" id="year" required type="text" className="form-control" />
               <label>Year</label>
             </div>
 
             <div className='form-floating mb-3'>
-              <input value={vin} onChange={handleVinChange} maxLength="17" name="name" placeholder="VIN Number" id="name" required type="text" className="form-control" />
+              <input value={vin} onChange={handleVinChange} maxLength="17" name="vin" placeholder="VIN Number" id="name" required type="text" className="form-control" />
               <label>VIN Number</label>
             </div>
 
