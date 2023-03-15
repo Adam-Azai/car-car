@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Messages } from 'primereact/messages'
 
 function ManufacturerForm() {
   const [manufacturer, setManufacturer] = useState('');
+  const msg = useRef(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,6 +30,11 @@ function ManufacturerForm() {
     setManufacturer(value)
   }
 
+  const successMessage = () => {
+    msg.current.show([
+        { severity: 'success', summary: 'Success', detail: 'Message Content', sticky: true},
+    ]);
+};
 
 return (
   <>
@@ -41,7 +48,7 @@ return (
             <input value={manufacturer} onChange={handleManufacturerChange}  placeholder="name" required type="text" className="form-control" name="name"/>
             <label>Manufacturers</label>
           </div>
-          <button className="btn btn-primary">Create</button>
+          <button onClick={successMessage} className="btn btn-primary">Create</button>
         </form>
       </div>
     </div>
