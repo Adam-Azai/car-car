@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Messages } from 'primereact/messages'
+import React, { useState, useEffect, useRef, Component } from 'react';
+// import { Messages } from 'primereact/messages';
 
 function ManufacturerForm() {
+
   const [manufacturer, setManufacturer] = useState('');
-  const msg = useRef(null)
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,29 +31,38 @@ function ManufacturerForm() {
     setManufacturer(value)
   }
 
-  const successMessage = () => {
-    msg.current.show([
-        { severity: 'success', summary: 'Success', detail: 'Message Content', sticky: true},
-    ]);
-};
+//   const successMessage = () => {
+//     msg.current.show([
+//         { severity: 'success', summary: 'Success', detail: 'Message Content', sticky: true},
+//     ]);
+// };
+
+
 
 return (
   <>
-  <div className="row center" id="manufacturer" >
-  <div className="shadow p-5">
-  <img src="https://media.designrush.com/articles/1651/conversions/_1526480503_147_car-preview.jpg"  />
-  <div className="col" id='create-manufacturer'>
-      <h2>Create a manufacturer</h2>
-      <form onSubmit={handleSubmit}>
+
+  <div className="container-fluid" id="manufacturer-form">
+  <div className="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <div className="row">
+  <div className="col-md-6" >
+  <img className='img-fluid' src="https://media.designrush.com/articles/1651/conversions/_1526480503_147_car-preview.jpg"  />
+  </div>
+  <div className="col-md-5 text-center" id="create-manufacturer" >
+  <div className="little-bit-down">
+      <h4 className='text-center'>Create a manufacturer</h4>
+  <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <input value={manufacturer} onChange={handleManufacturerChange}  placeholder="name" required type="text" className="form-control" name="name"/>
             <label>Manufacturers</label>
           </div>
-          <button onClick={successMessage} className="btn btn-primary">Create</button>
+          <button  className="btn btn-primary">Create</button>
         </form>
-      </div>
-    </div>
+        </div>
   </div>
+    </div>
+    </div>
+    </div>
     </>
 )
 }; // end
