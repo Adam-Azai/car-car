@@ -1,8 +1,13 @@
-
 body {
-  margin: 0px;
-  font-family: 'Calistoga', cursive;
-}
+  font-family: 'Chivo', sans-serif;
+  font-weight: 300;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+ }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -47,4 +52,13 @@ video {
   height: 100vh;
   width: 100vh;
   background-color: red;
+}
+
+
+
+.custom-container{
+  margin: 0 !important;
+  background-image: url("https://www.usnews.com/cmsmedia/7e/eb/51608a0742f6a0067cf23ddd7949/2022-subaru-outback-front3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
