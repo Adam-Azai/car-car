@@ -1,13 +1,17 @@
 body {
   font-family: 'Chivo', sans-serif;
   font-weight: 300;
+  height: 100%;
+  width: 100%;
  }
+
 
  h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-style: italic;
  }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -56,9 +60,11 @@ video {
 
 
 
-.custom-container{
-  margin: 0 !important;
-  background-image: url("https://www.usnews.com/cmsmedia/7e/eb/51608a0742f6a0067cf23ddd7949/2022-subaru-outback-front3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+.container {
+  margin: 0;
+  padding: 0;
+}
+#rat{
+  background-image: url('https://www.usnews.com/cmsmedia/7e/eb/51608a0742f6a0067cf23ddd7949/2022-subaru-outback-front3.jpg');
+  background-size: 100% auto;
 }

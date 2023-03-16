@@ -20,7 +20,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container">
+      <div >
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path='vehicles'>

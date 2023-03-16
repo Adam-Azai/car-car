@@ -74,9 +74,21 @@ function VehicleList(){
         fetchData()
     }, [])
 
+
+
+    const myStyle={
+        backgroundImage:
+ "url('https://www.usnews.com/cmsmedia/7e/eb/51608a0742f6a0067cf23ddd7949/2022-subaru-outback-front3.jpg')",
+        height:'100vh',
+        padding:'0',
+        width:'100vh',
+        backgroundSize: 'auto',
+        backgroundRepeat: 'no-repeat',
+    };
+
     return (
-        <>
-        <div className="custom-container" id='rat' >
+
+        <div style={myStyle}>
         <h2 className='text-center mt-3'>All Available Car Models</h2>
         <div className="row ">
             {vehicleCard.map((vehicleList, index) =>{
@@ -86,7 +98,7 @@ function VehicleList(){
             })}
         </div>
         </div>
-        </>
+
     )
 }
 export default VehicleList;
